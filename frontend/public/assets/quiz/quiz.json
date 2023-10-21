@@ -1,0 +1,472 @@
+[
+	{
+		"questionNumber": 1,
+		"question": "What is the highest individual score ever recorded in a Test cricket match?",
+		"options": ["375", "400*", "401", "452"],
+		"correctAnswer": "400*"
+	},
+	{
+		"questionNumber": 2,
+		"question": "Who holds the record for the fastest century in One Day Internationals (ODIs)?",
+		"options": [
+			"AB de Villiers",
+			"Chris Gayle",
+			"Shahid Afridi",
+			"Brendon McCullum"
+		],
+		"correctAnswer": "AB de Villiers"
+	},
+	{
+		"questionNumber": 3,
+		"question": "In which year was the first-ever international cricket match played?",
+		"options": ["1868", "1872", "1877", "1882"],
+		"correctAnswer": "1877"
+	},
+	{
+		"questionNumber": 4,
+		"question": "Who is the only cricketer to have scored 10,000 runs in both Tests and ODIs?",
+		"options": [
+			"Ricky Ponting",
+			"Kumar Sangakkara",
+			"Sachin Tendulkar",
+			"Jacques Kallis"
+		],
+		"correctAnswer": "Sachin Tendulkar"
+	},
+	{
+		"questionNumber": 5,
+		"question": "Which bowler has taken the most wickets in international cricket across all formats?",
+		"options": [
+			"Muttiah Muralitharan",
+			"Shane Warne",
+			"Anil Kumble",
+			"James Anderson"
+		],
+		"correctAnswer": "Muttiah Muralitharan"
+	},
+	{
+		"questionNumber": 6,
+		"question": "Who is known as the 'God of Cricket'?",
+		"options": [
+			"Ricky Ponting",
+			"Sachin Tendulkar",
+			"Brian Lara",
+			"Don Bradman"
+		],
+		"correctAnswer": "Sachin Tendulkar"
+	},
+	{
+		"questionNumber": 7,
+		"question": "Which team won the first-ever T20 World Cup in 2007?",
+		"options": ["Australia", "India", "Pakistan", "England"],
+		"correctAnswer": "India"
+	},
+	{
+		"questionNumber": 8,
+		"question": "Who has scored the most runs in a single ODI innings?",
+		"options": [
+			"Martin Guptill",
+			"Virender Sehwag",
+			"Rohit Sharma",
+			"Chris Gayle"
+		],
+		"correctAnswer": "Rohit Sharma"
+	},
+	{
+		"questionNumber": 9,
+		"question": "Which cricketer has the nickname 'Captain Cool'?",
+		"options": ["MS Dhoni", "Virat Kohli", "Ricky Ponting", "Sachin Tendulkar"],
+		"correctAnswer": "MS Dhoni"
+	},
+	{
+		"questionNumber": 10,
+		"question": "Who was the first batsman to score 10,000 runs in Test cricket?",
+		"options": [
+			"Sachin Tendulkar",
+			"Ricky Ponting",
+			"Sunil Gavaskar",
+			"Brian Lara"
+		],
+		"correctAnswer": "Sachin Tendulkar"
+	},
+	{
+		"questionNumber": 11,
+		"question": "In which year did India win their first Cricket World Cup?",
+		"options": ["1983", "1975", "1992", "2011"],
+		"correctAnswer": "1983"
+	},
+	{
+		"questionNumber": 12,
+		"question": "Who is the fastest bowler to reach 100 wickets in Test cricket?",
+		"options": [
+			"Dale Steyn",
+			"Malcolm Marshall",
+			"Shane Warne",
+			"Muttiah Muralitharan"
+		],
+		"correctAnswer": "Muttiah Muralitharan"
+	},
+	{
+		"questionNumber": 13,
+		"question": "Which cricketer is known as the 'Sultan of Multan'?",
+		"options": [
+			"Yuvraj Singh",
+			"Inzamam-ul-Haq",
+			"Virender Sehwag",
+			"Matthew Hayden"
+		],
+		"correctAnswer": "Virender Sehwag"
+	},
+	{
+		"questionNumber": 14,
+		"question": "Who has the most dismissals as a wicketkeeper in international cricket?",
+		"options": [
+			"Adam Gilchrist",
+			"Mark Boucher",
+			"MS Dhoni",
+			"Kumar Sangakkara"
+		],
+		"correctAnswer": "MS Dhoni"
+	},
+	{
+		"questionNumber": 15,
+		"question": "Which bowler has the best bowling figures in a Test innings?",
+		"options": [
+			"Jim Laker",
+			"Anil Kumble",
+			"Muttiah Muralitharan",
+			"Wasim Akram"
+		],
+		"correctAnswer": "Jim Laker"
+	},
+	{
+		"questionNumber": 16,
+		"question": "Who is the youngest cricketer to score a century in Test cricket?",
+		"options": [
+			"Sachin Tendulkar",
+			"Don Bradman",
+			"Ricky Ponting",
+			"Javed Miandad"
+		],
+		"correctAnswer": "Sachin Tendulkar"
+	},
+	{
+		"questionNumber": 17,
+		"question": "Which cricketer has hit the most sixes in international cricket?",
+		"options": [
+			"Shahid Afridi",
+			"Chris Gayle",
+			"AB de Villiers",
+			"Brendon McCullum"
+		],
+		"correctAnswer": "Shahid Afridi"
+	},
+	{
+		"questionNumber": 18,
+		"question": "Who holds the record for the fastest fifty in T20 internationals?",
+		"options": ["Yuvraj Singh", "Brendon McCullum", "KL Rahul", "Chris Gayle"],
+		"correctAnswer": "Yuvraj Singh"
+	},
+	{
+		"questionNumber": 19,
+		"question": "In which country did the first official international cricket match take place?",
+		"options": ["England", "Australia", "India", "South Africa"],
+		"correctAnswer": "Canada"
+	},
+	{
+		"questionNumber": 20,
+		"question": "Who was the first cricketer to achieve the 'double' of 10,000 runs and 1,000 wickets in Test cricket?",
+		"options": ["Kapil Dev", "Shane Warne", "Ian Botham", "Richard Hadlee"],
+		"correctAnswer": "Ian Botham"
+	},
+	{
+		"questionNumber": 21,
+		"question": "Which cricketer has the nickname 'Rawalpindi Express'?",
+		"options": ["Shoaib Akhtar", "Brett Lee", "Dale Steyn", "Wasim Akram"],
+		"correctAnswer": "Shoaib Akhtar"
+	},
+	{
+		"questionNumber": 22,
+		"question": "Who is the highest run-scorer in the history of IPL (Indian Premier League)?",
+		"options": ["Virat Kohli", "Suresh Raina", "Rohit Sharma", "David Warner"],
+		"correctAnswer": "Virat Kohli"
+	},
+	{
+		"questionNumber": 23,
+		"question": "Who was the first Indian cricketer to score a triple century in Test cricket?",
+		"options": [
+			"Virender Sehwag",
+			"Sachin Tendulkar",
+			"Rahul Dravid",
+			"Sunil Gavaskar"
+		],
+		"correctAnswer": "Virender Sehwag"
+	},
+	{
+		"questionNumber": 24,
+		"question": "Which cricketer has the best bowling figures in a T20I match?",
+		"options": [
+			"Ajantha Mendis",
+			"Yuzvendra Chahal",
+			"Rashid Khan",
+			"Sohail Tanveer"
+		],
+		"correctAnswer": "Ajantha Mendis"
+	},
+	{
+		"questionNumber": 25,
+		"question": "Who is the only cricketer to have scored a century in all three formats on captaincy debut?",
+		"options": [
+			"Virat Kohli",
+			"Rohit Sharma",
+			"Kane Williamson",
+			"Faf du Plessis"
+		],
+		"correctAnswer": "Faf du Plessis"
+	},
+	{
+		"questionNumber": 26,
+		"question": "Which cricketer has the most international runs across all formats?",
+		"options": [
+			"Sachin Tendulkar",
+			"Ricky Ponting",
+			"Kumar Sangakkara",
+			"Virat Kohli"
+		],
+		"correctAnswer": "Sachin Tendulkar"
+	},
+	{
+		"questionNumber": 27,
+		"question": "Who is the only cricketer to have scored more than 100 international centuries?",
+		"options": [
+			"Sachin Tendulkar",
+			"Ricky Ponting",
+			"Virat Kohli",
+			"Brian Lara"
+		],
+		"correctAnswer": "Sachin Tendulkar"
+	},
+	{
+		"questionNumber": 28,
+		"question": "Which team has won the most ICC Cricket World Cup titles?",
+		"options": ["Australia", "India", "West Indies", "England"],
+		"correctAnswer": "Australia"
+	},
+	{
+		"questionNumber": 29,
+		"question": "Who was the first cricketer to reach 10,000 runs in One Day Internationals?",
+		"options": [
+			"Sachin Tendulkar",
+			"Ricky Ponting",
+			"Brian Lara",
+			"Kumar Sangakkara"
+		],
+		"correctAnswer": "Sachin Tendulkar"
+	},
+	{
+		"questionNumber": 30,
+		"question": "Who holds the record for the fastest century in Test cricket?",
+		"options": [
+			"Brendon McCullum",
+			"David Warner",
+			"Misbah-ul-Haq",
+			"Nathan Astle"
+		],
+		"correctAnswer": "Brendon McCullum"
+	},
+	{
+		"questionNumber": 31,
+		"question": "Which cricketer has the best bowling figures in a One Day International?",
+		"options": [
+			"Chaminda Vaas",
+			"Glenn McGrath",
+			"Shahid Afridi",
+			"Anil Kumble"
+		],
+		"correctAnswer": "Chaminda Vaas"
+	},
+	{
+		"questionNumber": 32,
+		"question": "Who is the youngest player to score a century in international T20 cricket?",
+		"options": ["Shahid Afridi", "Babar Azam", "Dawid Malan", "Rashid Khan"],
+		"correctAnswer": "Babar Azam"
+	},
+	{
+		"questionNumber": 33,
+		"question": "Which cricketer has the best bowling figures in a Women's T20 International?",
+		"options": [
+			"Anya Shrubsole",
+			"Ellyse Perry",
+			"Poonam Yadav",
+			"Sophie Ecclestone"
+		],
+		"correctAnswer": "Anya Shrubsole"
+	},
+	{
+		"questionNumber": 34,
+		"question": "Who is the only player to score a double century in a Women's One Day International?",
+		"options": ["Mithali Raj", "Belinda Clark", "Meg Lanning", "Deepti Sharma"],
+		"correctAnswer": "Belinda Clark"
+	},
+	{
+		"questionNumber": 35,
+		"question": "Which cricketer has taken the most wickets in Women's T20 Internationals?",
+		"options": [
+			"Ellyse Perry",
+			"Anya Shrubsole",
+			"Poonam Yadav",
+			"Sophie Ecclestone"
+		],
+		"correctAnswer": "Poonam Yadav"
+	},
+	{
+		"questionNumber": 36,
+		"question": "Who is the fastest Indian bowler to reach 100 wickets in Test cricket?",
+		"options": [
+			"Kapil Dev",
+			"Jasprit Bumrah",
+			"Ravichandran Ashwin",
+			"Anil Kumble"
+		],
+		"correctAnswer": "Ravichandran Ashwin"
+	},
+	{
+		"questionNumber": 37,
+		"question": "Who holds the record for the highest individual score in Women's T20 Internationals?",
+		"options": [
+			"Meg Lanning",
+			"Alyssa Healy",
+			"Danni Wyatt",
+			"Harmanpreet Kaur"
+		],
+		"correctAnswer": "Meg Lanning"
+	},
+	{
+		"questionNumber": 38,
+		"question": "Which cricketer has the most dismissals as a wicketkeeper in Women's One Day Internationals?",
+		"options": [
+			"Sarah Taylor",
+			"Alyssa Healy",
+			"Charlotte Edwards",
+			"Trisha Chetty"
+		],
+		"correctAnswer": "Charlotte Edwards"
+	},
+	{
+		"questionNumber": 39,
+		"question": "Who is the youngest player to score a century in international cricket?",
+		"options": [
+			"Sachin Tendulkar",
+			"Shahid Afridi",
+			"Kane Williamson",
+			"Ricky Ponting"
+		],
+		"correctAnswer": "Shahid Afridi"
+	},
+	{
+		"questionNumber": 40,
+		"question": "Which cricketer has the best bowling figures in a Women's One Day International?",
+		"options": [
+			"Jhulan Goswami",
+			"Anya Shrubsole",
+			"Deepti Sharma",
+			"Sophie Devine"
+		],
+		"correctAnswer": "Anya Shrubsole"
+	},
+	{
+		"questionNumber": 41,
+		"question": "Who is the only player to score a double century in a Men's T20 International?",
+		"options": ["Chris Gayle", "Martin Guptill", "Aaron Finch", "Rohit Sharma"],
+		"correctAnswer": "Aaron Finch"
+	},
+	{
+		"questionNumber": 42,
+		"question": "Which cricketer has the best bowling figures in a Men's T20 International?",
+		"options": [
+			"Ajantha Mendis",
+			"Rashid Khan",
+			"Yuzvendra Chahal",
+			"Deepak Chahar"
+		],
+		"correctAnswer": "Deepak Chahar"
+	},
+	{
+		"questionNumber": 43,
+		"question": "Who was the first cricketer to score 10,000 runs in T20 cricket?",
+		"options": [
+			"Chris Gayle",
+			"Brendon McCullum",
+			"Kieron Pollard",
+			"David Malan"
+		],
+		"correctAnswer": "Chris Gayle"
+	},
+	{
+		"questionNumber": 44,
+		"question": "Which cricketer has the most sixes in Men's T20 Internationals?",
+		"options": ["Rohit Sharma", "Chris Gayle", "Martin Guptill", "Colin Munro"],
+		"correctAnswer": "Martin Guptill"
+	},
+	{
+		"questionNumber": 45,
+		"question": "Who is the only player to take four wickets in four consecutive balls in T20 Internationals?",
+		"options": [
+			"Lasith Malinga",
+			"Ajantha Mendis",
+			"Rashid Khan",
+			"Tim Southee"
+		],
+		"correctAnswer": "Tim Southee"
+	},
+	{
+		"questionNumber": 46,
+		"question": "Which cricketer has the best bowling figures in a Men's ODI match?",
+		"options": [
+			"Anil Kumble",
+			"Chaminda Vaas",
+			"Shahid Afridi",
+			"Glenn McGrath"
+		],
+		"correctAnswer": "Chaminda Vaas"
+	},
+	{
+		"questionNumber": 47,
+		"question": "Who is the fastest bowler to reach 100 wickets in ODI cricket?",
+		"options": ["Mitchell Starc", "Saqlain Mushtaq", "Shane Bond", "Brett Lee"],
+		"correctAnswer": "Saqlain Mushtaq"
+	},
+	{
+		"questionNumber": 48,
+		"question": "Which cricketer has the most centuries in Women's One Day Internationals?",
+		"options": [
+			"Suzie Bates",
+			"Meg Lanning",
+			"Charlotte Edwards",
+			"Rachael Haynes"
+		],
+		"correctAnswer": "Meg Lanning"
+	},
+	{
+		"questionNumber": 49,
+		"question": "Who is the fastest cricketer to reach 10,000 runs in One Day Internationals?",
+		"options": [
+			"Virat Kohli",
+			"Sachin Tendulkar",
+			"Ricky Ponting",
+			"AB de Villiers"
+		],
+		"correctAnswer": "Virat Kohli"
+	},
+	{
+		"questionNumber": 50,
+		"question": "Which cricketer has the best bowling figures in a Women's T20 International?",
+		"options": [
+			"Anya Shrubsole",
+			"Ellyse Perry",
+			"Poonam Yadav",
+			"Sophie Ecclestone"
+		],
+		"correctAnswer": "Anya Shrubsole"
+	}
+]
