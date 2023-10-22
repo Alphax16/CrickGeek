@@ -1,9 +1,9 @@
-// import React, { useState } from 'react'
+import React, { useState } from 'react'
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-// import Tour from "./Tour";
-// import { TourProvider } from "./context/TourContext";
+import Tour from "./Tour";
+import { TourProvider } from "./context/TourContext";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -21,8 +21,8 @@ function App() {
     <>
       <Router>
         <Navbar />
-        {/* <TourProvider> */}
-          {/* <Tour /> */}
+        <TourProvider>
+          <Tour />
           <Routes>
             <Route path="/" element={<Home />} />
             {/* <Route path="/how-it-works" element={<HowItWorks />} /> */}
@@ -32,7 +32,7 @@ function App() {
             <Route path="/quiz" element={<Quiz />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
-        {/* </TourProvider> */}
+        </TourProvider>
         <Footer />
       </Router>
     </>

@@ -6,7 +6,7 @@ export function useTour() {
   return useContext(TourContext);
 }
 
-export function TourProvider({ ...children }) {
+export function TourProvider({ children }) {
   const [startTour, setStartTour] = useState(false);
 
   return (

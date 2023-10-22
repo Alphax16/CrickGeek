@@ -2,10 +2,10 @@ import { Container, Stack, Flex, Box, Heading, Text, Button, Image,
   // Icon, IconButton, createIcon, IconProps, useColorModeValue,
   createIcon,
 } from '@chakra-ui/react';
-// import Navbar from './Navbar';
+import Navbar from './Navbar';
 import { motion } from 'framer-motion';
-// import Tour from '../Tour';
-// import { useState } from 'react';
+import Tour from '../Tour';
+import { useState } from 'react';
 import { useTour } from '../context/TourContext';
 import { useNavigate } from 'react-router-dom';
 
