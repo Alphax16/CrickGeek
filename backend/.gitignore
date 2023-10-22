@@ -1,3 +1,6 @@
-logs
+/logs
 /*ENV
 .env
+*.pyc
+*.exe
+__pycache__
