@@ -13,7 +13,7 @@ function Quiz() {
   const [score, setScore] = useState(0);
 
   const fetchQuizData = () => {
-    fetch("/assets/quiz.json")
+    fetch("/assets/quiz/quiz.json")
       .then((response) => response.json())
       .then((data) => {
         console.log('DATA-47:', data);
