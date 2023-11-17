@@ -27,8 +27,8 @@ app.register_blueprint(
     Route_T20I_Mens_Cricket_Match_prediction_bp, url_prefix=prefix)
 app.register_blueprint(
     Route_IPL_bp, url_prefix=prefix)
-app.register_blueprint(
-    Route_IPL_2008_2017_bp, url_prefix=prefix)
+# app.register_blueprint(
+    # Route_IPL_2008_2017_bp, url_prefix=prefix)
 app.register_blueprint(
     Route_ODI_bp, url_prefix=prefix)
 
