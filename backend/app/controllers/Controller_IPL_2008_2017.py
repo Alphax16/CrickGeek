@@ -32,8 +32,10 @@ class IPL_2008_2017:
         self.scaler = load(self.PKL_BASE_PATH + "scaler.joblib")
 
         # Load the Model-
-        self.model = load_model(self.MODEL_BASE_PATH +
-                                "IPL_Match_Score_Predictor_2008_2017.h5")
+        try:
+            self.model = load_model(self.MODEL_BASE_PATH + "IPL_Match_Score_Predictor_2008_2017.h5")
+        except Exception as ex:
+            print(ex)
 
     def predict(self, venue, batting_team, bowling_team, striker, bowler):
         # print(self.categories)
