@@ -3,4 +3,4 @@ services:
     dockerfile: Dockerfile
     env:
       - key: PORT
-        value: '8080'
+        value: '5000'
