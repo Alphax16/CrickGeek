@@ -1,0 +1,46 @@
+2023-10-19 03:28:06,156,INFO,Request Headers: Content-Length: 58
+Accept-Encoding: gzip, deflate, br
+Cookie: connect.sid=s%3ABq7QZmknTZWpw3UcxT1yQKvhxWtuLx3P.zYiL7%2BxF8kPdYu8Nm8GZUNBL8msW0%2FUdgNjk0kyjbxk
+Accept: */*
+User-Agent: Thunder Client (https://www.thunderclient.com)
+Content-Type: application/json
+Host: 127.0.0.1:5000
+Connection: close
+
+
+2023-10-19 03:28:06,156,INFO,Request Headers: Content-Length: 58
+Accept-Encoding: gzip, deflate, br
+Cookie: connect.sid=s%3ABq7QZmknTZWpw3UcxT1yQKvhxWtuLx3P.zYiL7%2BxF8kPdYu8Nm8GZUNBL8msW0%2FUdgNjk0kyjbxk
+Accept: */*
+User-Agent: Thunder Client (https://www.thunderclient.com)
+Content-Type: application/json
+Host: 127.0.0.1:5000
+Connection: close
+
+
+2023-10-19 03:28:06,157,INFO,Request Body: {
+  "features": [100, 100, 100, 100, 100, 100,100, 100]
+}
+
+2023-10-19 03:28:06,157,INFO,Request Body: {
+  "features": [100, 100, 100, 100, 100, 100,100, 100]
+}
+
+2023-10-19 03:28:06,160,INFO,Response Status Code: 200
+2023-10-19 03:28:06,160,INFO,Response Status Code: 200
+2023-10-19 03:28:06,160,INFO,Response Headers: Content-Type: application/json
+Content-Length: 39
+
+
+2023-10-19 03:28:06,160,INFO,Response Headers: Content-Type: application/json
+Content-Length: 39
+
+
+2023-10-19 03:28:06,162,INFO,Response Body: {
+  "prediction": 3932.4666451788416
+}
+
+2023-10-19 03:28:06,162,INFO,Response Body: {
+  "prediction": 3932.4666451788416
+}
+
