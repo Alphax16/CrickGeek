@@ -7,7 +7,8 @@ export default defineConfig({
   server: {
     port: 3000,
   },
-  envPrefix: 'VITE_',
+  // envPrefix: 'VITE_',
+  
   // esbuild: {
   //   jsxInject: `import React from 'react';`,
   //   jsxFactory: 'React.createElement',

@@ -50,11 +50,9 @@ app.register_blueprint(
 #     app.logger.info('Response Body: %s', response.get_data(as_text=True))
 #     return response
 
-
 @app.route("/")
 def index():
     return 'Hello, World!'
-
 
 def main():
     # with app.app_context():
@@ -63,7 +61,6 @@ def main():
     # app = setup_logging(app)
     # app = log_request_info(app)
     app.run(debug=True)
-
 
 if __name__ == '__main__':
     main()
