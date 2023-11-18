@@ -60,7 +60,7 @@ def main():
     # app.run(debug=True)
     # app = setup_logging(app)
     # app = log_request_info(app)
-    app.run(debug=True, host=0.0.0.0)
+    app.run(debug=True, host="0.0.0.0")
 
 if __name__ == '__main__':
     main()
