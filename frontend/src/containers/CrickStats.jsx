@@ -51,10 +51,10 @@ const CrickStats = () => {
       
 
     return (
-        <Box y="16" bgColor="#12504B" color="#fff" padding={20}>
+        <Box y="16" bgColor="#12504B" color="#fff" minW={"100vw"} minH={"100vh"}>
             <VStack>
-              <Heading py={'4'} fontSize={{ base: '2xl', sm: '4xl' }} fontWeight={'bold'} color={'white'}>
-                Cricket Statistics
+              <Heading mt={'5%'} py={'4'} fontSize={{ base: '2xl', sm: '4xl' }} fontWeight={'bold'} color={'white'}>
+                Global Cricket Statistics
               </Heading>
               <Cards cardData={data} />
             </VStack>

@@ -96,8 +96,16 @@ const Navbar = () => {
               boxSize="50px"
 
               as={motion.img}
-              whileHover={{ rotate: 360 }}
-              transition={{ duration: 1, ease: "linear" }}
+              whileHover={{
+                rotate: 360,
+                transition: { duration: 3, ease: "linear" }
+              }}
+              whileTap={{
+                rotate: 360,
+                x: "100vw",
+                y: [0, -50, 50, -50],
+                transition: { duration: 3, ease: "linear", yoyo: Infinity }
+              }}
               // _hover={{
               //   transition: "filter 0.5s ease",
               //   // filter: "hue-rotate(360deg)",

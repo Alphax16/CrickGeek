@@ -12,10 +12,10 @@ function Statistics_Routes() {
     const [data, setData] = useState([]);
 
     const dataAPIs = {
-        IPL: "/IPL-Predictor",
+        "IPL": "/IPL-Predictor",
         "IPL-Innings": "/IPL-Predictor-2008-2017",
-        T20I: "/T20I-Mens-Cricket-Match-Predictor",
-        ODI: "/ODI-Predictor",
+        "T20I": "/T20I-Mens-Cricket-Match-Predictor",
+        "ODI": "/ODI-Predictor",
         "Umpire-Action-Images": "/Umpire-Decision-Classifier",
     };
 

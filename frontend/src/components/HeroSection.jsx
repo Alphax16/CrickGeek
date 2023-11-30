@@ -15,7 +15,7 @@ const HeroSection =()=> {
   const navigate = useNavigate();
 
   const handleStartTourClick = () => {
-    
+    console.log('Tour started!');
     setStartTour(true);
   };
 
@@ -85,20 +85,16 @@ const HeroSection =()=> {
             //     zIndex: 0,
             //   }}
             >
-              Powering Tech,
+              Powering Cricket,
             </MotionText>
             <br />
             <MotionText
-              
-
               position={'relative'}
-              
               width={'max-content'}  
               initial={{  x: "-50vw" }}
               animate={{  x: 0 }}
-              
               transition={{ duration: 1, origin: 1, delay: 0.6 }} color={'#C1E836'}>
-            Preserving Eco
+              Enforcing AI
             </MotionText>
           </Heading>
           <MotionText
@@ -109,7 +105,7 @@ const HeroSection =()=> {
               animate={{  x: 0 }}
               
               transition={{ duration: 1, origin: 1, delay:0.9 }}  color={'white'}>
-        {`CrickGeek, the fusion of technology and sustainability, promises a brighter future. From renewable energy to smart recycling, it's reshaping how we coexist with our planet. With green energy, eco-friendly gadgets, and innovative solutions.`}
+        {`CrickGeek, the synergy of sports enthusiasm and cutting-edge AI, envisions a dynamic future for cricket enthusiasts. From match analytics to intelligent predictions, it's revolutionizing how we engage with the game with advanced algorithms, real-time insights, and innovative solutions.`}
 
 
 

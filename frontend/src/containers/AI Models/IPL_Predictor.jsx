@@ -50,49 +50,63 @@ const IPL_Predictor = () => {
                   KTK: 'Kochi Tuskers Kerala', PW: 'Pune Warriors'};
 
   const handlesubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
+  e.preventDefault();
 
-    try {
-      if (team1 === team2) {
-        console.log(team1);
+  if (!team1 || !team2) {
+    Swal.fire({
+      title: 'Please choose both teams.',
+      icon: 'warning',
+      confirmButtonText: 'OK',
+      confirmButtonColor: '#4fa94d',
+    });
+    return;
+  }
+
+  setLoading(true);
+
+  try {
+    if (team1 === team2) {
+      console.log(team1);
+      Swal.fire({
+        title: `Same Winner Tie: ${abbvr[team1]}`,
+        icon: "success",
+      });
+
+      setLoading(false);
+      return;
+    }
+
+    console.log('tossWinner:', tossWinner);
+
+    const data = {
+      team1: abbvr[team1], team2: abbvr[team2], city, toss_decision: tossDecision === 'Head' ? 0 : 1, toss_winner: tossWinner !== '' ? abbvr[tossWinner] : abbvr[team1], venue: venue
+    }
+
+    console.log('Frontend Data:', data);
+
+    const response = await instance.post("/IPL-Predictor", data);
+    console.log(response.data);
+
+    setTimeout(() => {
+      setLoading(false);
+      // Show Sweet Alert after 4 seconds if both teams are different
+      if (team1 !== team2) {
         Swal.fire({
-          title: `Same Winner Tie: ${abbvr[team1]}`,
-  
+          title: `Winner Team: ${response.data.winner_team}`,
           icon: "success",
         });
       }
-
-      const data = {
-        team1: abbvr[team1], team2: abbvr[team2], city, toss_decision: tossDecision === 'Head' ? 0 : 1, toss_winner: abbvr[tossWinner], venue: venue
-      }
-
-      console.log('Frontend Data:', data);
-
-      const response = await instance.post(
-        "/IPL-Predictor",
-        data
-      );
-      console.log(response.data);
-
-      setTimeout(() => {
-        setLoading(false);
-        Swal.fire({
-          title: `Winner Team: ${response.data.winner_team}`,
-  
-          icon: "success",
-        }); 
-        setResponseText(response.data);
-        setShowResponse(true);
-      }, 4000);
-    } catch (err) {
-      console.error("Error fetching tree data:", err);
-      setLoading(false);
-    }
-  };
+      setResponseText(response.data);
+      setShowResponse(true);
+    }, 4000);
+  } catch (err) {
+    console.error("Error fetching tree data:", err);
+    setLoading(false);
+  }
+};
 
   return (
-    <Box bg={"#12504B"} py={"16"}>
+    <Box bg={"#12504B"} py={"16"} width={"100vw"} height={"100vh"} mx={"auto"} my={"auto"}>
       {/* {loading && (
         <div style={{ display: "flex", justifyContent: "center" }}>
           <ThreeCircles
@@ -114,7 +128,7 @@ const IPL_Predictor = () => {
         <Text
           fontSize={{ base: "xl", lg: "4xl" }}
           fontWeight={"bold"}
-          my={"4"}
+          my={"5%"}
           color={"#fff"}
         >
           IPL Score Predictor

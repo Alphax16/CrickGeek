@@ -60,7 +60,7 @@ function ExcelTable({ data }) {
   const slNoColumn = useMemo(() => columns.find((column) => column.Header === 'Sl. No.'), [columns]);
 
   return (
-    <Box py={"16"} bgColor={"#12504B"} color="#fff">
+    <Box py={"16"} bgColor={"#12504B"} color="#fff" minW="100vw" minH="100vh">
       <Center>
         <Input
           value={globalFilter || ''}

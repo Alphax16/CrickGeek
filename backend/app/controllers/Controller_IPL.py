@@ -65,25 +65,25 @@ class IPLMatchPredictor:
             'venue': venue_encoded
         })
 
-        print("Input Features:\n", input_features, file=sys.stderr)
+        print("Input Features:\n", input_features, file=sys.stdout)
 
         predicted_winner_label_num = self.model.predict(input_features)[0]
         print("Predicted Winner Label:",
-              predicted_winner_label_num, file=sys.stderr)
+              predicted_winner_label_num, file=sys.stdout)
 
         predicted_winner_label = self.team_encoder.num_decode(
             predicted_winner_label_num)
-        print(predicted_winner_label_num, file=sys.stderr)
+        print(predicted_winner_label_num, file=sys.stdout)
 
         predicted_winner_short = self.team_encoder.num_decode(
             predicted_winner_label_num)
         print("Predicted Winner Short Name:",
-              predicted_winner_short, file=sys.stderr)
+              predicted_winner_short, file=sys.stdout)
 
         predicted_winner_long = self.team_encoder.decode(
             predicted_winner_short)
         print("Predicted Winner Long Name:",
-              predicted_winner_long, file=sys.stderr)
+              predicted_winner_long, file=sys.stdout)
 
         return predicted_winner_long
 

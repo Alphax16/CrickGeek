@@ -121,7 +121,7 @@ function ImagesTable({ data, serviceName }) {
   };
 
   return (
-    <Box py="16" bgColor="#12504B" color="#fff">
+    <Box py="16" bgColor="#12504B" color="#fff" minW={"100vw"} minH={"100vh"}>
       <Center>
         <Input
           value={globalFilter || ''}
@@ -134,46 +134,47 @@ function ImagesTable({ data, serviceName }) {
       </Center>
       <VStack>
         <Table {...getTableProps()} variant="simple" w="97%">
-        <Thead>
-  <Tr>
-    {visibleColumns.map((column, columnIndex) => (
-      <Th
-        key={columnIndex}
-        {...column.getHeaderProps(column.getSortByToggleProps())}
-        bgColor="gray.200"
-        p={2}
-      >
-        {column.render('Header')}
-        <span>
-          {column.isSorted ? (column.isSortedDesc ? ' 🔽' : ' 🔼') : ''}
-        </span>
-      </Th>
-    ))}
-  </Tr>
-</Thead>
+          <Thead>
+            <Tr>
+              {visibleColumns.map((column, columnIndex) => (
+                <Th
+                  key={columnIndex}
+                  {...column.getHeaderProps(column.getSortByToggleProps())}
+                  bgColor="gray.200"
+                  p={2}
+                >
+                  {column.render('Header')}
+                  <span>
+                    {column.isSorted ? (column.isSortedDesc ? ' 🔽' : ' 🔼') : ''}
+                  </span>
+                </Th>
+              ))}
+            </Tr>
+          </Thead>
 
-<Tbody {...getTableBodyProps()}>
-  {page.map((row, rowIndex) => {
-    prepareRow(row);
-    return (
-      <Tr key={rowIndex} {...row.getRowProps()}>
-        {row.cells.map((cell, cellIndex) => (
-          <Td key={cellIndex} {...cell.getCellProps()} p={2}>
-            {cell.column.id === 'selection' ? (
-              <input type="checkbox" {...row.getToggleRowSelectedProps()} />
-            ) : cell.column.id === 'url' ? (
-              <img src={cell.value} alt="Preview" style={{ width: '50px', height: 'auto' }} />
-            ) : (
-              cell.render('Cell')
-            )}
-          </Td>
-        ))}
-      </Tr>
-    );
-  })}
-</Tbody>
+          <Tbody {...getTableBodyProps()}>
+            {page.map((row, rowIndex) => {
+              prepareRow(row);
+              return (
+                <Tr key={rowIndex} {...row.getRowProps()}>
+                  {row.cells.map((cell, cellIndex) => (
+                    <Td key={cellIndex} {...cell.getCellProps()} p={2}>
+                      {cell.column.id === 'selection' ? (
+                        <input type="checkbox" {...row.getToggleRowSelectedProps()} />
+                      ) : cell.column.id === 'url' ? (
+                        <img src={cell.value} alt="Preview" style={{ width: '50px', height: 'auto' }} />
+                      ) : (
+                        cell.render('Cell')
+                      )}
+                    </Td>
+                  ))}
+                </Tr>
+              );
+            })}
+          </Tbody>
 
         </Table>
+
         <TablePaginationPanel
           pageIndex={pageIndex}
           pageCount={pageCount}
@@ -181,9 +182,11 @@ function ImagesTable({ data, serviceName }) {
           nextPage={nextPage}
           previousPage={previousPage}
         />
+
         <Button colorScheme="blue" onClick={handleDownloadImages} my={4} disabled={loading}>
           {loading ? <Spinner size="sm" /> : 'Download Images'}
         </Button>
+
         <TableMenuPanel
           columns={columns}
           toggleColumnVisibility={toggleColumnVisibility}

@@ -12,28 +12,28 @@ function Tour() {
     // Define steps
     {
       target: "body",
-      content: "This is a quick Feature Demo Tour of our Web-App, 'Geekco' 🦎.",
+      content: "This is a quick Feature Demo Tour of our Web-App, 'CrickGeek' 🏏.",
       placement: "center",
     },
     {
       target: ".nav-logo",
-      content: "Kudos! You spotted it successfully. This is 'Geekco', your friendly companion pet gecko 🦎 throughout this journey. Hover to play with him.",
+      content: "Kudos! You spotted it successfully, GeekBall⚾. Hover and/or Tap to flaunt your bowling skills.",
     },
     {
       target: ".navbox",
-      content: "This tab contains all features 🧰 of offered by 'Geekco'.",
+      content: "This tab contains all features 🧰 of offered by 'CrickGeek'.",
     },
     {
       target: ".nav-home",
-      content: "This tab is for leading to the Home page 🏡 of 'Geekco'.",
+      content: "This tab is for leading to the Home page 🏡 of 'CrickGeek'.",
     },
     {
       target: ".nav-maps",
-      content: "This tab leads to Cartographic Analysis 🗺 of Indian region Forest Cover of our application 'Geekco'.",
+      content: "This tab leads to Cartographic Analysis 🗺 of Indian region Forest Cover of our application 'CrickGeek'.",
     },
     {
       target: ".nav-statistics",
-      content: "This ta leads to Statistical Analysis 📈 of the Forest Cover Data.",
+      content: "This ta leads to Statistical Analysis 📈 of the Global Historical Cricket data being used by our AI models.",
     },
     {
       target: ".nav-visualizations",
@@ -41,15 +41,15 @@ function Tour() {
     },
     {
       target: ".nav-ai-models",
-      content: "This tab contains all the AI services 🧠 offered by 'Geekco' for aiding Nature and its preservation.",
+      content: "This tab contains all the AI services 🧠 offered by 'CrickGeek' for aiding monitoring and predicting Cricket player and team performances.",
     },
     {
       target: ".nav-quiz",
-      content: "This tab leads to an 'ECO-QUIZ' ❓ session where you can test your knowledge about the Environment and Nature.",
+      content: "This tab leads to an 'CRICK-QUIZ' ❓ session where you can test your knowledge about Cricket.",
     },
     {
       target: ".facts",
-      content: "This is our 'Fact-O-Bot' 🤖. Click it to get facts related to Environment.",
+      content: "This is our 'Fact-O-Bot' 🤖. Click it to get facts related to Cricket.",
     },
     {
       target: ".how-it-works",
@@ -61,7 +61,7 @@ function Tour() {
     },
     {
       target: ".models",
-      content: "These the all the AI Services 🤖 which 'Geekco' offers.",
+      content: "These the all the AI Services 🤖 which 'CrickGeek' offers.",
     },
     
     // {

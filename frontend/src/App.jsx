@@ -2,13 +2,14 @@ import React, { useState } from 'react'
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import Tour from "./Tour";
+import Tour from './Tour';
 import { TourProvider } from "./context/TourContext";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
 import Home from "./containers/Home";
+import HowItWorks from './containers/HowItWorks';
 import AI_Model_Routes from "./containers/AI_Model_Routes";
 import CrickStats from './containers/CrickStats';
 import Quiz from "./containers/Quiz";
@@ -29,7 +30,7 @@ function App() {
           <Tour />
           <Routes>
             <Route path="/" element={<Home />} />
-            {/* <Route path="/how-it-works" element={<HowItWorks />} /> */}
+            <Route path="/how-it-works" element={<HowItWorks />} />
             <Route path="/statistics/*" element={<Statistics_Routes />} />
             {/* <Route path="/visualizations" element={<Visualizations />} /> */}
             <Route path="/models/*" element={<AI_Model_Routes />} />
