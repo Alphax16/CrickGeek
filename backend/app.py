@@ -2,7 +2,7 @@ from flask import Flask, request
 from flask_cors import CORS
 from app.routes.Route_T20I_Mens_Cricket_Match import Route_T20I_Mens_Cricket_Match_prediction_bp
 from app.routes.Route_IPL import Route_IPL_bp
-from app.routes.Route_IPL_2008_2017 import Route_IPL_2008_2017_bp
+# from app.routes.Route_IPL_2008_2017 import Route_IPL_2008_2017_bp
 from app.routes.Route_ODI import Route_ODI_bp
 from app.routes.Route_Umpire_Decision_Classification import Route_Umpire_Decision_Clf_bp
 # from configs import initialize_logging
@@ -27,8 +27,8 @@ app.register_blueprint(
     Route_T20I_Mens_Cricket_Match_prediction_bp, url_prefix=prefix)
 app.register_blueprint(
     Route_IPL_bp, url_prefix=prefix)
-app.register_blueprint(
-    Route_IPL_2008_2017_bp, url_prefix=prefix)
+# app.register_blueprint(
+    # Route_IPL_2008_2017_bp, url_prefix=prefix)
 app.register_blueprint(
     Route_ODI_bp, url_prefix=prefix)
 
@@ -60,7 +60,7 @@ def main():
     # app.run(debug=True)
     # app = setup_logging(app)
     # app = log_request_info(app)
-    app.run(debug=True)
+    app.run(debug=True, host="0.0.0.0")
 
 if __name__ == '__main__':
     main()
