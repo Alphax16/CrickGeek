@@ -48,9 +48,9 @@ const ModelCards = () => {
   
 
   return (
-    <Box py={'16'} ref={ref} bg={'#12504B'} width={"100vw"} height={"100vh"}>
-      <Stack spacing={4} as={Container} maxW={'3xl'} textAlign={'center'}>
-        <Heading py={'4'} fontSize={{ base: '2xl', sm: '4xl' }} fontWeight={'bold'} color={'white'}>
+    <Box py={['8', '12', '16']} bg={'#12504B'} width={'100vw'} height={'100vh'}>
+      <Stack spacing={['2', '4']} as={Container} maxW={'3xl'} textAlign={'center'}>
+        <Heading py={['2', '4']} fontSize={{ base: '2xl', sm: '4xl' }} fontWeight={'bold'} color={'white'}>
           AI Models
         </Heading>
         <Text color={'white'} fontSize={{ base: 'sm', sm: 'lg' }} className='models'>
@@ -60,6 +60,7 @@ const ModelCards = () => {
 
       <Cards cardData={cardData} />
     </Box>
+
   );
 };
 
