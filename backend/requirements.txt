@@ -2,7 +2,7 @@ cloudinary
 flask
 Flask-Cors
 Jinja2
-joblib
+joblib==1.3.2
 keras
 numpy
 pandas
@@ -13,4 +13,3 @@ scikit-learn
 scipy
 tensorflow
 gunicorn
-pickle==1.2.0
