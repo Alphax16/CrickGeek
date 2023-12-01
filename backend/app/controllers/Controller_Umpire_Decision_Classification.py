@@ -12,11 +12,11 @@ class PredictionController:
     def __init__(self):
         downloadSetupFiles()
 
-        self.clf_model = load_model(
-            "./app/models/weights/Umpire_Action_Image_Classifier_MobileNet_V2.h5")
+        # self.clf_model = load_model(
+        #     "./app/models/weights/Umpire_Action_Image_Classifier_MobileNet_V2.h5")
 
-        with open("./app/models/pickles/Umpire_Action_Image_Classifier/Umpire_Action_Image_Classifier_ML.joblib", 'rb') as fpk:
-            self.ml_model = load(fpk)
+        # with open("./app/models/pickles/Umpire_Action_Image_Classifier/Umpire_Action_Image_Classifier_ML.joblib", 'rb') as fpk:
+        #     self.ml_model = load(fpk)
 
         # self.class_mappings = {0: 'noball', 1: 'out',
         #                        2: 'sixes', 3: 'wide', 4: 'no_action'}
@@ -27,16 +27,20 @@ class PredictionController:
         img_resized = cv.resize(img, (224, 224))
         x = image.img_to_array(img_resized)
         x = preprocess_input(x)
+        del img_resized
         return np.expand_dims(x, axis=0)
 
     def classify(self, img):
-        x = self.preprocessImage(img)
+        # x = self.preprocessImage(img)
 
-        predictions = self.clf_model.predict(x)
+        # predictions = self.clf_model.predict(x)
+        clf_model = load_model(
+            "./app/models/weights/Umpire_Action_Image_Classifier_MobileNet_V2.h5")
 
-        predicted_class_index = np.argmax(predictions)
-        predicted_class = self.class_mappings[predicted_class_index]
+        predicted_class_index = np.argmax(
+            clf_model.predict(self.preprocessImage(img)))
+        # predicted_class = self.class_mappings[predicted_class_index]
 
-        confidence_score = predictions[0, predicted_class_index]
+        # confidence_score = self.clf_model.predict(self.preprocessImage(img))[0, predicted_class_index]
 
-        return predicted_class, confidence_score
+        return self.class_mappings[predicted_class_index], clf_model.predict(self.preprocessImage(img))[0, predicted_class_index]

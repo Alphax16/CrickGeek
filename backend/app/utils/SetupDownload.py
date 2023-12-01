@@ -19,3 +19,5 @@ def downloadSetupFiles():
         print(
             f"Dowloading GDrive File ID: {file_id} to Server Destination: {destination} ...")
         download_file_from_drive(file_id, destination)
+
+    del destination_path, destination_file, destination
