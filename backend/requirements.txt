@@ -5,6 +5,7 @@ Jinja2
 joblib==1.3.2
 keras
 numpy
+opencv-python
 pandas
 pillow
 python-dotenv
