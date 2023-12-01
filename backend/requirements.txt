@@ -13,3 +13,4 @@ scikit-learn
 scipy
 tensorflow
 gunicorn
+pickle==1.2.2
