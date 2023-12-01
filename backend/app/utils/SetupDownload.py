@@ -9,7 +9,7 @@ load_dotenv()
 def downloadSetupFiles():
     # For Umpire Action Image Classifier Model-
     destination_path = "./app/models/weights/"
-    destination_file = "Umpire_Action_Image_Classifier.h5"
+    destination_file = "Umpire_Action_Image_Classifier_MobileNet_V2.h5"
     destination = os.path.join(destination_path, destination_file)
 
     if not os.path.exists(destination):
