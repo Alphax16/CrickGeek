@@ -2,6 +2,7 @@ from joblib import load
 from keras.models import load_model
 from keras.preprocessing import image
 from keras.applications.vgg19 import preprocess_input
+from app.utils.SetupDownload import downloadSetupFiles
 import numpy as np
 import cv2 as cv
 import sys
@@ -9,6 +10,8 @@ import sys
 
 class PredictionController:
     def __init__(self):
+        downloadSetupFiles()
+
         self.clf_model = load_model(
             "./app/models/weights/Umpire_Action_Image_Classifier.h5")
 

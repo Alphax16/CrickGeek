@@ -1,7 +1,14 @@
+# Server Logs-
 /logs
+
+# Virtual Environment and Environment Variable Files-
 /*ENV
 .env
+
+# Temporary and Cache files-
 *.pyc
 *.exe
 __pycache__
-./app/models/weights/Umpire_Action_Image_Classifier.h5
+
+# DL Model Files-
+**/weights/Umpire_Action_Image_Classifier.h5

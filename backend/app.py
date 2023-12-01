@@ -1,12 +1,15 @@
 from flask import Flask, request
 from flask_cors import CORS
+from app.utils.SetupDownload import downloadSetupFiles
+
+# from configs import initialize_logging
+from app.configs.logging_config import setup_logging, log_request_info
+
 from app.routes.Route_T20I_Mens_Cricket_Match import Route_T20I_Mens_Cricket_Match_prediction_bp
 from app.routes.Route_IPL import Route_IPL_bp
 # from app.routes.Route_IPL_2008_2017 import Route_IPL_2008_2017_bp
 from app.routes.Route_ODI import Route_ODI_bp
 from app.routes.Route_Umpire_Action_Decision_Classification import Route_Umpire_Action_Decision_Clf_bp
-# from configs import initialize_logging
-from app.configs.logging_config import setup_logging, log_request_info
 
 
 app = Flask(__name__)
@@ -52,15 +55,18 @@ app.register_blueprint(
 
 @app.route("/")
 def index():
-    return 'Hello, World!'
+    return 'Hi from Server Side...👋👋👋!!'
 
 
 def main():
+    downloadSetupFiles()
+
     # with app.app_context():
     #     setup_logging(app)
     # app.run(debug=True)
     # app = setup_logging(app)
     # app = log_request_info(app)
+
     app.run(debug=True, host="0.0.0.0")
 
 
