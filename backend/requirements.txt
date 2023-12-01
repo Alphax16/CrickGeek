@@ -6,6 +6,7 @@ joblib
 keras
 numpy
 pandas
+pickle==1.2.2
 pillow
 python-dotenv
 requests
