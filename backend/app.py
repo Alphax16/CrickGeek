@@ -1,6 +1,6 @@
 from flask import Flask, request
 from flask_cors import CORS
-from app.utils.SetupDownload import downloadSetupFiles
+# from app.utils.SetupDownload import downloadSetupFiles
 
 # from configs import initialize_logging
 from app.configs.logging_config import setup_logging, log_request_info
@@ -37,8 +37,8 @@ app.register_blueprint(
 
 
 # Graphical Multimedia(Image) Data AI Models Routes' Blueprints-
-app.register_blueprint(
-    Route_Umpire_Action_Decision_Clf_bp, url_prefix=prefix)
+# app.register_blueprint(
+#     Route_Umpire_Action_Decision_Clf_bp, url_prefix=prefix)
 
 
 # @app.before_request
@@ -59,7 +59,7 @@ def index():
 
 
 def main():
-    downloadSetupFiles()
+    # downloadSetupFiles()
 
     # with app.app_context():
     #     setup_logging(app)
