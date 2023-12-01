@@ -1,3 +1,4 @@
+dvc
 cloudinary
 flask
 Flask-Cors
@@ -5,6 +6,7 @@ Jinja2
 joblib
 keras
 numpy
+opencv-python
 pandas
 pillow
 python-dotenv
