@@ -12,11 +12,11 @@ const  Umpire_Action_Images_Classifier = () => {
   const [loading, setLoading] = useState(false);
 
   const decisionFormatter = {
-    'noball': 'No Ball',
-    'out': 'out',
-    'six': 'six',
-    'wide': 'wide',
-    'noaction': 'No Action (At ease)',
+    'no_ball': 'No Ball',
+    'out': 'Out',
+    'sixes': 'Six',
+    'wide': 'Wide',
+    'no_action': 'No Action (At ease)',
   }
 
   const handleFileChange = (e) => {
@@ -70,7 +70,7 @@ const  Umpire_Action_Images_Classifier = () => {
       console.log("File uploaded:", response.data);
      
       Swal.fire({
-        title: `Action Decision: ${decisionFormatter[response.data.decision]}`,
+        title: `Action Decision: ${decisionFormatter[response.data.decision]}\nConfidence: ${response.data.confidence}`,
 
         icon: "success",
       });

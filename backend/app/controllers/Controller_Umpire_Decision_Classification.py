@@ -13,31 +13,30 @@ class PredictionController:
         downloadSetupFiles()
 
         self.clf_model = load_model(
-            "./app/models/weights/Umpire_Action_Image_Classifier.h5")
+            "./app/models/weights/Umpire_Action_Image_Classifier_MobileNet_V2.h5")
 
         with open("./app/models/pickles/Umpire_Action_Image_Classifier/Umpire_Action_Image_Classifier_ML.joblib", 'rb') as fpk:
             self.ml_model = load(fpk)
 
-    def predict(self, img):
-        try:
-            img_resized = cv.resize(img, (224, 224))
+        # self.class_mappings = {0: 'noball', 1: 'out',
+        #                        2: 'sixes', 3: 'wide', 4: 'no_action'}
 
-            X = image.img_to_array(img_resized)
-            X = np.expand_dims(X, axis=0)
-            X = preprocess_input(X)
+        self.class_mappings = ['no_action', 'out', 'no_ball', 'sixes', 'wide']
 
-            features = self.clf_model.predict(X)
-            predicted_values_2 = self.ml_model.predict(features.reshape(1, -1))
+    def preprocessImage(self, img):
+        img_resized = cv.resize(img, (224, 224))
+        x = image.img_to_array(img_resized)
+        x = preprocess_input(x)
+        return np.expand_dims(x, axis=0)
 
-            choices = {'1': 'noball',
-                       '2': 'out',
-                       '3': 'six',
-                       '4': 'wide',
-                       '5': 'noaction'}
+    def classify(self, img):
+        x = self.preprocessImage(img)
 
-            result = choices.get(str(int(predicted_values_2)), 'default')
-            print('Result:', result, file=sys.stdout)
+        predictions = self.clf_model.predict(x)
 
-            return result
-        except Exception as ex:
-            return str(ex)
+        predicted_class_index = np.argmax(predictions)
+        predicted_class = self.class_mappings[predicted_class_index]
+
+        confidence_score = predictions[0, predicted_class_index]
+
+        return predicted_class, confidence_score
