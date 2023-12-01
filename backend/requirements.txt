@@ -1,3 +1,4 @@
+dvc
 cloudinary
 flask
 Flask-Cors
