@@ -6,7 +6,6 @@ joblib
 keras
 numpy
 pandas
-pickle
 pillow
 python-dotenv
 requests
