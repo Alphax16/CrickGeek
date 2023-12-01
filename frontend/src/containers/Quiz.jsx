@@ -95,7 +95,7 @@ function Quiz() {
   };
 
   return (
-    <Box bg="#12504B" h="max-content" height={"120vh"}>
+    <Box bg="#12504B" minW={"100vw"} minH={"120vh"}>
       <AlertDialog isOpen={isOpen} onClose={onClose}>
         <AlertDialogOverlay>
           <AlertDialogContent>
@@ -147,6 +147,7 @@ function Quiz() {
                         value={option}
                         onChange={() => setSelectedOption(option)}
                         isChecked={selectedOption === option}
+                        borderColor={"darkgreen"}
                         colorScheme="green" // You can adjust the color scheme as needed
                         size="lg" // You can adjust the size as needed
                       />
@@ -163,6 +164,7 @@ function Quiz() {
                   border="1px solid black"
                   onClick={handleBackClick}
                   disabled={currentIndex === 0}
+                  mx={"1%"}
                 >
                   Back
                 </Button>
@@ -171,6 +173,7 @@ function Quiz() {
                     bg="green.100"
                     border="1px solid black"
                     onClick={() => handleAnswerSubmit(selectedOption)}
+                    mx={"1%"}
                   >
                     Next
                   </Button>
@@ -179,12 +182,13 @@ function Quiz() {
                     bg="green.100"
                     border="1px solid black"
                     onClick={showAlertDialog}
+                    mx={"1%"}
                   >
                     Finish
                   </Button>
                 )}
               </Center>
-              <Center flexDir="col">
+              <Center>
                 <Text my="4">Score: {score}</Text>
               </Center>
             </Box>

@@ -6,6 +6,7 @@ joblib
 keras
 numpy
 pandas
+pillow
 python-dotenv
 requests
 scikit-learn

@@ -73,7 +73,7 @@ const T20I_Innings_Predictor = () => {
   };
 
   return (
-    <Box bg={"#12504B"} py={"16"}>
+    <Box bg={"#12504B"} py={"16"} minW={"100vw"} minH={"100vh"}>
       <LoadingSpinner isOpen={loading} />
       <Center flexDir={"column"}>
         <Text fontSize={{ base: "xl", lg: "4xl" }}
@@ -149,7 +149,9 @@ const T20I_Innings_Predictor = () => {
             onChange={(e) => setRunsFromBall(e.target.value)}
           />
 
-          <Button type="submit" my={"2"}>Get Predictions</Button>
+          <Center mt={"5%"}>
+            <Button type="submit" my={"2"}>Get Predictions</Button>
+          </Center>
         </form>
       </Center>
     </Box>

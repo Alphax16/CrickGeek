@@ -16,7 +16,7 @@ function Statistics_Routes() {
         "IPL-Innings": "/IPL-Predictor-2008-2017",
         "T20I": "/T20I-Mens-Cricket-Match-Predictor",
         "ODI": "/ODI-Predictor",
-        "Umpire-Action-Images": "/Umpire-Decision-Classifier",
+        "Umpire-Action-Images": "/Umpire-Action-Decision-Classifier",
     };
 
     function getEndOfRoute() {

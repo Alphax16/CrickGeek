@@ -60,7 +60,7 @@ const WaterPotabilityPredictor = () => {
   };
 
   return (
-    <Box bg={"#12504B"} py={"16"}>
+    <Box bg={"#12504B"} py={"16"} minW={"100vw"} minH={"100vh"}>
       {/* {loading && (
         <div style={{ display: "flex", justifyContent: "center" }}>
           <ThreeCircles

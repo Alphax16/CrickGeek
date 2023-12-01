@@ -1,4 +1,4 @@
-import { Box, Button, Center, Input, Text, Select } from "@chakra-ui/react";
+import { Box, Button, Center, Input, VStack, Text, Select } from "@chakra-ui/react";
 import { useState } from "react";
 import axios from "axios";
 import LoadingSpinner from "../../components/LoadingSpinner";
@@ -19,7 +19,6 @@ const IPL_Predictor = () => {
   const [tossWinner, selectTossWinner] = useState('');
   const [venue, selectVenue] = useState('');
 
-  
 
   const options = {
     teams: ['MI', 'KKR', 'RCB', 'DC', 'CSK', 'RR', 'DD', 'GL', 'KXIP', 'SRH', 'RPS', 'KTK', 'PW'],
@@ -49,6 +48,7 @@ const IPL_Predictor = () => {
                   KXIP: 'Kings XI Punjab', SRH: 'Sunrisers Hyderabad', RPS: 'Rising Pune Supergiants', 
                   KTK: 'Kochi Tuskers Kerala', PW: 'Pune Warriors'};
 
+  
   const handlesubmit = async (e) => {
   e.preventDefault();
 
@@ -106,7 +106,7 @@ const IPL_Predictor = () => {
 };
 
   return (
-    <Box bg={"#12504B"} py={"16"} width={"100vw"} height={"100vh"} mx={"auto"} my={"auto"}>
+    <Box bg={"#12504B"} py={"16"} width={"100vw"} height={"110vh"} mx={"auto"} my={"auto"}>
       {/* {loading && (
         <div style={{ display: "flex", justifyContent: "center" }}>
           <ThreeCircles
@@ -134,7 +134,8 @@ const IPL_Predictor = () => {
           IPL Score Predictor
         </Text>
 
-        <form style={{ width: "40%", color: "#fff" }} onSubmit={handlesubmit}>         
+        <form style={{ width: "40%", color: "#fff" }} onSubmit={handlesubmit}>
+          <VStack>     
             <Select
               value={team1 || ""}
               onChange={(e) => selectTeam1(e.target.value)}
@@ -166,10 +167,12 @@ const IPL_Predictor = () => {
                 ))
               }
             </Select>
+
             {/* city = 'Hyderabad'
             # toss_decision = 0
             # toss_winner = 'Royal Challengers Bangalore'
             # venue = 'Rajiv Gandhi International Stadium, Uppal' */}
+            
             <Select
               value={city || ""}
               onChange={(e) => chooseCity(e.target.value)}
@@ -239,10 +242,11 @@ const IPL_Predictor = () => {
             </Select>
             
           <Center>
-            <Button type="submit" my={"2"}>Get Predictions</Button>
+            <Button type="submit" mt={"14"}>Get Predictions</Button>
           </Center>
+          </VStack>
         </form>
-        {/* {showResponse && <p>{responseText}</p>} */}
+        {/* {showResponse && <Text>{responseText}</Text>} */}
       </Center>
     </Box>
   );

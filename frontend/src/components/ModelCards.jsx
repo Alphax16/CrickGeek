@@ -13,34 +13,41 @@ const ModelCards = () => {
   const cardData = [
     {
       title: "IPL Score Predictor",
-      imageSrc: "assets/AI-Models/IPL_Score_Predictor.jpg",
+      imageSrc: "assets/AI-Models/Previews/IPL_Score_Predictor.jpg",
       description: `Elevate your IPL experience! Our AI predicts match scores by analyzing player performance, pitch conditions, and team dynamics. Stay ahead with accurate forecasts.`,
       linkTo: "/models/ipl-score-predictor"
     },
     
     {
       title: "IPL Innings Score Predictor",
-      imageSrc: "assets/AI-Models/IPL_Innings_Score_Predictor.jpg",
+      imageSrc: "assets/AI-Models/Previews/IPL_Innings_Score_Predictor.jpg",
       description: `Get inning-wise insights for IPL matches! Our AI analyzes player stats and match conditions to forecast individual innings scores. Enhance your cricket strategy. Let the match and AI revolution begin.`,
       linkTo: "/models/ipl-innings-score-predictor"
     },
     
     {
       title: "T20 Innings Score Predictor",
-      imageSrc: "assets/AI-Models/T20_Innings_Score_Predictor.jpg",
+      imageSrc: "assets/AI-Models/Previews/T20_Innings_Score_Predictor.jpg",
       description: `Experience T20 thrills! Our AI predicts scores for men's T20 cricket, offering strategic insights based on player stats and match dynamics. Stay informed for every match.`,
-      linkTo: "/models/T20I-score-predictor"
+      linkTo: "/models/t20i-score-predictor"
+    },
+
+    {
+      title: "Umpire Action Decision Classifier",
+      imageSrc: "assets/AI-Models/Previews/Umpire_Action_Images_Classifier.jpg",
+      description: `Experience T20 thrills! Our AI predicts scores for men's T20 cricket, offering strategic insights based on player stats and match dynamics. Stay informed for every match.`,
+      linkTo: "/models/umpire-action-decision-classifier"
     },
 
     // {
     //   title: "IPL Score Predictor",
-    //   imageSrc: "assets/AI-Models/IPL_Score_Predictor.jpg",
+    //   imageSrc: "assets/AI-Models/Previews/IPL_Score_Predictor.jpg",
     //   description: `AQI (Air Quality Index) predictor uses time series data analysis to forecast air quality, providing information for health and pollution management. Predicts PM2.5 levels.`,
     //   linkTo: "/models/ipl-score-predictor"
     // },
     // {
     //   title: "IPL Score Predictor",
-    //   imageSrc: "assets/AI-Models/IPL_Score_Predictor.jpg",
+    //   imageSrc: "assets/AI-Models/Previews/IPL_Score_Predictor.jpg",
     //   description: `AQI (Air Quality Index) predictor uses time series data analysis to forecast air quality, providing information for health and pollution management. Predicts PM2.5 levels.`,
     //   linkTo: "/models/ipl-score-predictor"
     // },
@@ -48,7 +55,7 @@ const ModelCards = () => {
   
 
   return (
-    <Box py={['8', '12', '16']} bg={'#12504B'} width={'100vw'} height={'100vh'}>
+    <Box py={['8', '12', '16']} bg={'#12504B'} minWidth={'100vw'} minHeight={'100vh'}>
       <Stack spacing={['2', '4']} as={Container} maxW={'3xl'} textAlign={'center'}>
         <Heading py={['2', '4']} fontSize={{ base: '2xl', sm: '4xl' }} fontWeight={'bold'} color={'white'}>
           AI Models

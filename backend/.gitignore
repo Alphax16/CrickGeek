@@ -4,3 +4,4 @@
 *.pyc
 *.exe
 __pycache__
+.\app\models\weights\Umpire_Action_Image_Classifier.h5

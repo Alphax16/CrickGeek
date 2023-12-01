@@ -41,6 +41,13 @@ def upload_images2Cloudinary(folder_path, cloud_folder_name):
     return public_id_mapping
 
 
+def upload_images2Cloudinary_NoLocSave(img):
+    upload_result = uploader.upload(img)
+    cloudinary_url = upload_result['secure_url']
+
+    return cloudinary_url
+
+
 def get_image_links_from_Cloudinary(folder_name):
     # List all resources in the specified folder
     result = api.resources(
