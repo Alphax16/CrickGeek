@@ -14,37 +14,37 @@ Route_Umpire_Action_Decision_Clf_bp = Blueprint(
 prediction_controller = PredictionController()
 
 
-@Route_Umpire_Action_Decision_Clf_bp.route("/Umpire-Action-Decision-Classifier", methods=['POST'])
-def predict():
-    try:
-        if 'image' not in request.files:
-            return jsonify({'error': 'No file provided'}), 400
+# @Route_Umpire_Action_Decision_Clf_bp.route("/Umpire-Action-Decision-Classifier", methods=['POST'])
+# def predict():
+#     try:
+#         if 'image' not in request.files:
+#             return jsonify({'error': 'No file provided'}), 400
 
-        file = request.files['image']
-        print('File:', file, file=sys.stdout)
+#         file = request.files['image']
+#         print('File:', file, file=sys.stdout)
 
-        # Check if the file is an image (you may want to add more robust image type checking)
-        if not file.content_type.startswith('image/'):
-            return jsonify({'error': 'Invalid file type. Please provide an image'}), 400
+#         # Check if the file is an image (you may want to add more robust image type checking)
+#         if not file.content_type.startswith('image/'):
+#             return jsonify({'error': 'Invalid file type. Please provide an image'}), 400
 
-        # Read the image from FileStorage using BytesIO
-        img_bytes = BytesIO(file.read())
-        img = cv.imdecode(np.frombuffer(
-            img_bytes.read(), np.uint8), cv.IMREAD_COLOR)
-        print('img', img, file=sys.stdout)
+#         # Read the image from FileStorage using BytesIO
+#         img_bytes = BytesIO(file.read())
+#         img = cv.imdecode(np.frombuffer(
+#             img_bytes.read(), np.uint8), cv.IMREAD_COLOR)
+#         print('img', img, file=sys.stdout)
 
-        # img = cv.imread(file)
+#         # img = cv.imread(file)
 
-        predicted_class, confidence_score = prediction_controller.classify(img)
-        print(
-            f'Prediction: {predicted_class}\nConfidence Score: {confidence_score}', file=sys.stdout)
-        res = jsonify(decision=predicted_class,
-                      confidence=str(confidence_score))
-        return res
+#         predicted_class, confidence_score = prediction_controller.classify(img)
+#         print(
+#             f'Prediction: {predicted_class}\nConfidence Score: {confidence_score}', file=sys.stdout)
+#         res = jsonify(decision=predicted_class,
+#                       confidence=str(confidence_score))
+#         return res
 
-    except Exception as ex:
-        print(ex, file=sys.stderr)
-        return jsonify(error=str(ex))
+#     except Exception as ex:
+#         print(ex, file=sys.stderr)
+#         return jsonify(error=str(ex))
 
 
 @Route_Umpire_Action_Decision_Clf_bp.route("/Umpire-Action-Decision-Classifier", methods=['GET'])
