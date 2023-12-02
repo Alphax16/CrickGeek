@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from app.controllers.Controller_Umpire_Decision_Classification import PredictionController
+# from app.controllers.Controller_Umpire_Decision_Classification import PredictionController
 from app.models.Model_Images import upload_images2Cloudinary_NoLocSave, get_image_links_from_Cloudinary
 from json import loads
 from PIL import Image
