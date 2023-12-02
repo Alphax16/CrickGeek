@@ -37,8 +37,8 @@ app.register_blueprint(
 
 
 # Graphical Multimedia(Image) Data AI Models Routes' Blueprints-
-# app.register_blueprint(
-#     Route_Umpire_Action_Decision_Clf_bp, url_prefix=prefix)
+app.register_blueprint(
+    Route_Umpire_Action_Decision_Clf_bp, url_prefix=prefix)
 
 
 # @app.before_request
