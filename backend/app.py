@@ -1,6 +1,6 @@
 from flask import Flask, request
 from flask_cors import CORS
-from app.utils.SetupDownload import downloadSetupFiles
+# from app.utils.SetupDownload import downloadSetupFiles
 
 # from configs import initialize_logging
 from app.configs.logging_config import setup_logging, log_request_info
@@ -63,7 +63,7 @@ def index():
 
 
 def main():
-    downloadSetupFiles()
+    # downloadSetupFiles()
 
     # with app.app_context():
     #     setup_logging(app)
