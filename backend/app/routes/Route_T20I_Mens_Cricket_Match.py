@@ -21,10 +21,11 @@ def predict():
         data_dict = data
 
         inng_runs, inng_wickets, balls_remaining, total_batter_runs, total_non_striker_runs, batter_balls_faced, non_striker_balls_faced, runs_from_ball = list(
-            map(float, data_dict.values()))
+            map(int, data_dict.values()))
 
         prediction = prediction_controller.predict([inng_runs, inng_wickets, balls_remaining, total_batter_runs,
                                                    total_non_striker_runs, batter_balls_faced, non_striker_balls_faced, runs_from_ball])
+
         res = jsonify(T20I_Target_Score=prediction)
         print(res)
         return res

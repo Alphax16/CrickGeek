@@ -3,12 +3,12 @@ import { Box, Flex, Avatar, HStack, IconButton, Button, Menu,
 } from "@chakra-ui/react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineCloseCircle } from "react-icons/ai";
-import { Link, useLocation, useNavigate } from "react-router-dom"; // Import Link and useLocation
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState,  } from "react";
 import { motion } from "framer-motion";
 
 
- // Define routes links and names and their classNames-
+// Define routes links and names and their classNames-
 const Links = [
   { name: "Home", path: "/", className: "nav-home" },
   // { name: "Maps", path: "/forest-map", className: "nav-maps" },
@@ -50,7 +50,7 @@ const Navbar = () => {
 
   const getRandomFact = () => {
     setIsGlowing(true);
-    console.log("clicked");
+    console.log("Fact Button Clicked!");
     
     fetch("/facts.json")
       .then((response) => response.json())

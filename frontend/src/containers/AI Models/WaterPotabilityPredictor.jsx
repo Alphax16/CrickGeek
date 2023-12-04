@@ -60,7 +60,7 @@ const WaterPotabilityPredictor = () => {
   };
 
   return (
-    <Box bg={"#12504B"} py={"16"} minW={"100vw"} minH={"100vh"}>
+    <Box bg={"primary.oceanBlue"} py={"16"} minW={"100vw"} minH={"100vh"}>
       {/* {loading && (
         <div style={{ display: "flex", justifyContent: "center" }}>
           <ThreeCircles
@@ -152,9 +152,9 @@ const WaterPotabilityPredictor = () => {
             placeholder="Turbidity"
             onChange={(e) => setTurbidity(e.target.value)}
           />
-          {/* <Button type="submit">Get Predictions</Button> */}
+          {/* <Button type="submit">Get Prediction</Button> */}
           <Center>
-            <Button type="submit" my={"2"}>Get Predictions</Button>
+            <Button type="submit" my={"2"}>Get Prediction</Button>
           </Center>
         </form>
         {/* {showResponse && <p>{responseText}</p>} */}

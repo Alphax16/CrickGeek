@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { useTable, useGlobalFilter, useSortBy, usePagination, useRowSelect } from 'react-table';
-import { Box, Input, Table, Thead, Tbody, Tr, Th, Td, Center, VStack, Button, Spinner } from '@chakra-ui/react';
+import { Box, Center, VStack, HStack, Text, Input, Table, Thead, Tbody, Tr, Th, Td, Button, Spinner } from '@chakra-ui/react';
 import JSZip from 'jszip';
 import { saveAs } from 'file-saver';
 
@@ -20,7 +20,7 @@ const initializeColumns = (data) => {
   }));
 };
 
-function ImagesTable({ data, serviceName }) {
+function ImagesTable({ data, serviceName, title }) {
   const [columns, setColumns] = useState([]);
   const [loading, setLoading] = useState(false);
   const [menuPanelOpen, setMenuPanelOpen] = useState(false);
@@ -121,79 +121,101 @@ function ImagesTable({ data, serviceName }) {
   };
 
   return (
-    <Box py="16" bgColor="#12504B" color="#fff" minW={"100vw"} minH={"100vh"}>
+    <Box py="16" bgColor="primary.oceanBlue" color="#fff" minW={"100vw"} minH={"100vh"}>
       <Center>
-        <Input
-          value={globalFilter || ''}
-          onChange={(e) => setGlobalFilter(e.target.value)}
-          placeholder="Search..."
-          width={'70%'}
-          my={6}
-        />
-        <Button onClick={openMenuPanel}>Open Menu Panel</Button>
+        <VStack>
+          <Text
+              fontSize={{ base: "xl", lg: "4xl" }}
+              fontWeight={"bold"}
+              my={"5%"}
+              color={"#fff"}
+          >
+            {title}
+          </Text>
+
+          <Center>
+            {data.length !== 0 ? (
+              <VStack>
+                <HStack>
+                  <Input
+                    value={globalFilter || ''}
+                    onChange={(e) => setGlobalFilter(e.target.value)}
+                    placeholder="Search..."
+                    width={'70%'}
+                    my={6}
+                  />
+
+                  <Button onClick={openMenuPanel}>Open Menu Panel</Button>
+                </HStack>
+
+                <Table {...getTableProps()} variant="simple" w="70vw">
+                  <Thead>
+                    <Tr>
+                      {visibleColumns.map((column, columnIndex) => (
+                        <Th
+                          key={columnIndex}
+                          {...column.getHeaderProps(column.getSortByToggleProps())}
+                          bgColor="gray.200"
+                          p={2}
+                        >
+                          {column.render('Header')}
+                          <span>
+                            {column.isSorted ? (column.isSortedDesc ? ' 🔽' : ' 🔼') : ''}
+                          </span>
+                        </Th>
+                      ))}
+                    </Tr>
+                  </Thead>
+
+                  <Tbody {...getTableBodyProps()}>
+                    {page.map((row, rowIndex) => {
+                      prepareRow(row);
+                      return (
+                        <Tr key={rowIndex} {...row.getRowProps()}>
+                          {row.cells.map((cell, cellIndex) => (
+                            <Td key={cellIndex} {...cell.getCellProps()} p={2}>
+                              {cell.column.id === 'selection' ? (
+                                <input type="checkbox" {...row.getToggleRowSelectedProps()} />
+                              ) : cell.column.id === 'url' ? (
+                                <img src={cell.value} alt="Preview" style={{ width: '50px', height: 'auto' }} />
+                              ) : (
+                                cell.render('Cell')
+                              )}
+                            </Td>
+                          ))}
+                        </Tr>
+                      );
+                    })}
+                  </Tbody>
+
+                </Table>
+                <TablePaginationPanel
+                  pageIndex={pageIndex}
+                  pageCount={pageCount}
+                  gotoPage={gotoPage}
+                  nextPage={nextPage}
+                  previousPage={previousPage}
+                />
+      
+                <Button colorScheme="blue" onClick={handleDownloadImages} my={4} disabled={loading}>
+                  {loading ? <Spinner size="sm" /> : 'Download Images'}
+                </Button>
+      
+                <TableMenuPanel
+                  columns={columns}
+                  toggleColumnVisibility={toggleColumnVisibility}
+                  isOpen={menuPanelOpen}
+                  onClose={closeMenuPanel}
+                />
+              </VStack>
+              ) : (
+                <Spinner thickness="4px" speed="0.65s" emptyColor="gray.200" color="#C1E836" size="xl" />
+              )
+            }
+          </Center>
+          
+        </VStack>
       </Center>
-      <VStack>
-        <Table {...getTableProps()} variant="simple" w="97%">
-          <Thead>
-            <Tr>
-              {visibleColumns.map((column, columnIndex) => (
-                <Th
-                  key={columnIndex}
-                  {...column.getHeaderProps(column.getSortByToggleProps())}
-                  bgColor="gray.200"
-                  p={2}
-                >
-                  {column.render('Header')}
-                  <span>
-                    {column.isSorted ? (column.isSortedDesc ? ' 🔽' : ' 🔼') : ''}
-                  </span>
-                </Th>
-              ))}
-            </Tr>
-          </Thead>
-
-          <Tbody {...getTableBodyProps()}>
-            {page.map((row, rowIndex) => {
-              prepareRow(row);
-              return (
-                <Tr key={rowIndex} {...row.getRowProps()}>
-                  {row.cells.map((cell, cellIndex) => (
-                    <Td key={cellIndex} {...cell.getCellProps()} p={2}>
-                      {cell.column.id === 'selection' ? (
-                        <input type="checkbox" {...row.getToggleRowSelectedProps()} />
-                      ) : cell.column.id === 'url' ? (
-                        <img src={cell.value} alt="Preview" style={{ width: '50px', height: 'auto' }} />
-                      ) : (
-                        cell.render('Cell')
-                      )}
-                    </Td>
-                  ))}
-                </Tr>
-              );
-            })}
-          </Tbody>
-
-        </Table>
-
-        <TablePaginationPanel
-          pageIndex={pageIndex}
-          pageCount={pageCount}
-          gotoPage={gotoPage}
-          nextPage={nextPage}
-          previousPage={previousPage}
-        />
-
-        <Button colorScheme="blue" onClick={handleDownloadImages} my={4} disabled={loading}>
-          {loading ? <Spinner size="sm" /> : 'Download Images'}
-        </Button>
-
-        <TableMenuPanel
-          columns={columns}
-          toggleColumnVisibility={toggleColumnVisibility}
-          isOpen={menuPanelOpen}
-          onClose={closeMenuPanel}
-        />
-      </VStack>
     </Box>
   );
 }

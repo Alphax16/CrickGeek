@@ -95,7 +95,7 @@ function Quiz() {
   };
 
   return (
-    <Box bg="#12504B" minW={"100vw"} minH={"120vh"}>
+    <Box bg="primary.oceanBlue" minW={"100vw"} minH={"120vh"}>
       <AlertDialog isOpen={isOpen} onClose={onClose}>
         <AlertDialogOverlay>
           <AlertDialogContent>

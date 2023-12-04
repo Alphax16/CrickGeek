@@ -18,18 +18,25 @@ const ModelCards = () => {
       linkTo: "/models/ipl-score-predictor"
     },
     
-    {
-      title: "IPL Innings Score Predictor",
-      imageSrc: "assets/AI-Models/Previews/IPL_Innings_Score_Predictor.jpg",
-      description: `Get inning-wise insights for IPL matches! Our AI analyzes player stats and match conditions to forecast individual innings scores. Enhance your cricket strategy. Let the match and AI revolution begin.`,
-      linkTo: "/models/ipl-innings-score-predictor"
-    },
+    // {
+    //   title: "IPL Innings Score Predictor",
+    //   imageSrc: "assets/AI-Models/Previews/IPL_Innings_Score_Predictor.jpg",
+    //   description: `Get inning-wise insights for IPL matches! Our AI analyzes player stats and match conditions to forecast individual innings scores. Enhance your cricket strategy. Let the match and AI revolution begin.`,
+    //   linkTo: "/models/ipl-innings-score-predictor"
+    // },
     
     {
       title: "T20 Innings Score Predictor",
       imageSrc: "assets/AI-Models/Previews/T20_Innings_Score_Predictor.jpg",
       description: `Experience T20 thrills! Our AI predicts scores for men's T20 cricket, offering strategic insights based on player stats and match dynamics. Stay informed for every match.`,
       linkTo: "/models/t20i-score-predictor"
+    },
+    
+    {
+      title: "ICC Test Cricket Runs Predictor",
+      imageSrc: "assets/AI-Models/Previews/ICC_Test_Cricket_Runs_Predictor.jpg",
+      description: `Experience ICC Test Cricket thrills! Our AI predicts runs for ICC Test cricket, offering strategic insights based on player stats and match dynamics. Stay informed for every match.`,
+      linkTo: "/models/icc-test-runs-predictor"
     },
 
     {
@@ -55,7 +62,7 @@ const ModelCards = () => {
   
 
   return (
-    <Box py={['8', '12', '16']} bg={'#12504B'} minWidth={'100vw'} minHeight={'100vh'}>
+    <Box py={['8', '12', '16']} bg={'primary.oceanBlue'} minWidth={'100vw'} minHeight={'100vh'}>
       <Stack spacing={['2', '4']} as={Container} maxW={'3xl'} textAlign={'center'}>
         <Heading py={['2', '4']} fontSize={{ base: '2xl', sm: '4xl' }} fontWeight={'bold'} color={'white'}>
           AI Models

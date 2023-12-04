@@ -26,7 +26,7 @@ import {
     const isInView = useInView(ref, { once: true });
   
     return (
-      <Box py={'16'} ref={ref} bg={'#12504B'}>
+      <Box py={'16'} ref={ref} bg={'primary.seaGreen'}>
         <Stack spacing={4} as={Container} maxW={'3xl'} textAlign={'center'}>
           <Heading py={'4'} fontSize={{ base: '2xl', sm: '4xl' }} fontWeight={'bold'} color={'white'}>
             Data Statistics

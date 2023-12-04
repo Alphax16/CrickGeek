@@ -27,6 +27,7 @@ def predict():
 
         prediction = prediction_controller.predict(
             [team1, team2, city, toss_decision, toss_winner, venue])
+        
         res = jsonify(winner_team=prediction)
         print(res)
         return res

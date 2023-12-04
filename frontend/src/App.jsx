@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Tour from './Tour';
 import { TourProvider } from "./context/TourContext";
+
+import { ScrollToTop } from "./utils/ScrollToTop";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -24,7 +26,8 @@ function App() {
 
   return (
     <>
-      <Router y="16" bgColor="#12504B" color="#fff">
+      <Router y="16" bgColor="primary.oceanBlue" color="#fff">
+        <ScrollToTop />
         <Navbar />
         <TourProvider>
           <Tour />

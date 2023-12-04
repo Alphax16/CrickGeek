@@ -11,7 +11,7 @@ const HowItWorks = () => {
   const videoId = 'Tw3TjMuyjvQ';
 
   return (
-    <Box py={"16"} bgColor={"#12504B"} color="#fff">
+    <Box py={"16"} bgColor={"primary.oceanBlue"} color="#fff">
       <Heading
         py={"4"}
         textAlign={"center"}

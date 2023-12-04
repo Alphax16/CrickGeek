@@ -73,20 +73,23 @@ const T20I_Innings_Predictor = () => {
   };
 
   return (
-    <Box bg={"#12504B"} py={"16"} minW={"100vw"} minH={"100vh"}>
-      <LoadingSpinner isOpen={loading} />
-      <Center flexDir={"column"}>
+    <Box bg={"primary.oceanBlue"} py={"16"} minW={"100vw"} minH={"130vh"}>
+      <Center flexDir={"column"} my={"2%"}>
         <Text fontSize={{ base: "xl", lg: "4xl" }}
               fontWeight={"bold"}
-              my={"4"}
+              mt={"4"}
+              mb={"6"}
               color={"#fff"}
         >
-          IPL Score Predictor
+          T20 Innings Score Forecaster
         </Text>
+
+        <LoadingSpinner isOpen={loading} />
+
         <form style={{ width: "40%", color: "#fff" }} onSubmit={handleSubmit}>
           
           <Input
-            my={"2"}
+            my={"4"}
             type="text"
             color={"#fff"}
             placeholder="Inning Runs"
@@ -94,7 +97,7 @@ const T20I_Innings_Predictor = () => {
           />
 
           <Input
-            my={"2"}
+            my={"4"}
             type="text"
             color={"#fff"}
             placeholder="Inning Wickets"
@@ -102,7 +105,7 @@ const T20I_Innings_Predictor = () => {
           />
 
           <Input
-            my={"2"}
+            my={"4"}
             type="text"
             color={"#fff"}
             placeholder="Balls Remaining"
@@ -110,7 +113,7 @@ const T20I_Innings_Predictor = () => {
           />
 
           <Input
-            my={"2"}
+            my={"4"}
             type="text"
             color={"#fff"}
             placeholder="Total Batter Runs"
@@ -118,7 +121,7 @@ const T20I_Innings_Predictor = () => {
           />
           
           <Input
-            my={"2"}
+            my={"4"}
             type="text"
             color={"#fff"}
             placeholder="Total Non-Striker Runs"
@@ -126,7 +129,7 @@ const T20I_Innings_Predictor = () => {
           />
 
           <Input
-            my={"2"}
+            my={"4"}
             type="text"
             color={"#fff"}
             placeholder="Batter Balls Faced"
@@ -134,7 +137,7 @@ const T20I_Innings_Predictor = () => {
           />
 
           <Input
-            my={"2"}
+            my={"4"}
             type="text"
             color={"#fff"}
             placeholder="Non-Striker Balls Faced"
@@ -142,7 +145,7 @@ const T20I_Innings_Predictor = () => {
           />
 
           <Input
-            my={"2"}
+            my={"4"}
             type="text"
             color={"#fff"}
             placeholder="Runs from Ball"
@@ -150,7 +153,7 @@ const T20I_Innings_Predictor = () => {
           />
 
           <Center mt={"5%"}>
-            <Button type="submit" my={"2"}>Get Predictions</Button>
+            <Button type="submit" my={"4"}>Get Prediction</Button>
           </Center>
         </form>
       </Center>

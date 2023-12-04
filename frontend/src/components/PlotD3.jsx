@@ -132,7 +132,7 @@ const Plot = ({ data }) => {
         minH="100vh"
         w="100vw"
         spacing={4}
-        bg="#12504B"
+        bg="primary.oceanBlue"
         py={"16"}
       >
         <Box p={4} color="#fff">

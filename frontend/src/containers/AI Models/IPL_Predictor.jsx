@@ -19,6 +19,8 @@ const IPL_Predictor = () => {
   const [tossWinner, selectTossWinner] = useState('');
   const [venue, selectVenue] = useState('');
 
+  const optsColor = '#082438';
+
 
   const options = {
     teams: ['MI', 'KKR', 'RCB', 'DC', 'CSK', 'RR', 'DD', 'GL', 'KXIP', 'SRH', 'RPS', 'KTK', 'PW'],
@@ -106,7 +108,7 @@ const IPL_Predictor = () => {
 };
 
   return (
-    <Box bg={"#12504B"} py={"16"} width={"100vw"} height={"110vh"} mx={"auto"} my={"auto"}>
+    <Box bg={"primary.oceanBlue"} py={"16"} minW={"100vw"} minH={"130vh"} mx={"auto"} my={"auto"}>
       {/* {loading && (
         <div style={{ display: "flex", justifyContent: "center" }}>
           <ThreeCircles
@@ -129,23 +131,23 @@ const IPL_Predictor = () => {
           fontSize={{ base: "xl", lg: "4xl" }}
           fontWeight={"bold"}
           my={"5%"}
-          color={"#fff"}
+          color={"#ffffff"}
         >
           IPL Score Predictor
         </Text>
 
-        <form style={{ width: "40%", color: "#fff" }} onSubmit={handlesubmit}>
+        <form style={{ width: "40%", color: "#ffffff" }} onSubmit={handlesubmit}>
           <VStack>     
             <Select
               value={team1 || ""}
               onChange={(e) => selectTeam1(e.target.value)}
               placeholder="Choose First Team"
-              backgroundColor={'#1a382b'}
-              my={"2"}
+              backgroundColor={optsColor}
+              my={"4"}
             >
               {
                 options['teams'].map((opt) => (
-                  <option key={opt} value={opt} style={{ backgroundColor: '#1a382b' }}>
+                  <option key={opt} value={opt} style={{ backgroundColor: optsColor }}>
                     {abbvr[opt]}
                   </option>
                 ))
@@ -156,12 +158,12 @@ const IPL_Predictor = () => {
               value={team2 || ""}
               onChange={(e) => selectTeam2(e.target.value)}
               placeholder="Choose Second Team"
-              backgroundColor={'#1a382b'}
-              my={"2"}
+              backgroundColor={optsColor}
+              my={"4"}
             >
               {
                 options['teams'].map((opt) => (
-                  <option key={opt} value={opt} style={{ backgroundColor: '#1a382b' }}>
+                  <option key={opt} value={opt} style={{ backgroundColor: optsColor }}>
                     {abbvr[opt]}
                   </option>
                 ))
@@ -177,12 +179,12 @@ const IPL_Predictor = () => {
               value={city || ""}
               onChange={(e) => chooseCity(e.target.value)}
               placeholder="Choose the City"
-              backgroundColor={'#1a382b'}
-              my={"2"}
+              backgroundColor={optsColor}
+              my={"4"}
             >
               {
                 options['cities'].map((opt) => (
-                  <option key={opt} value={opt} style={{ backgroundColor: '#1a382b' }}>
+                  <option key={opt} value={opt} style={{ backgroundColor: optsColor }}>
                     {opt}
                   </option>
                 ))
@@ -193,12 +195,13 @@ const IPL_Predictor = () => {
               value={tossDecision || ""}
               onChange={(e) => setTossDecision(e.target.value)}
               placeholder="Enter the Toss Decision"
-              backgroundColor={'#1a382b'}
-              my={"2"}
+              bgColor={optsColor}
+              backgroundColor={optsColor}
+              my={"4"}
             >
               {
                 options['tossDecisions'].map((opt) => (
-                  <option key={opt} value={opt} style={{ backgroundColor: '#1a382b' }}>
+                  <option key={opt} value={opt} style={{ backgroundColor: optsColor }}>
                     {opt}
                   </option>
                 ))
@@ -211,14 +214,14 @@ const IPL_Predictor = () => {
                     value={team1 || ""}
                     onChange={(e) => selectTossWinner(e.target.value)}
                     placeholder="Choose the Toss Winner"
-                    backgroundColor={'#1a382b'}
-                    my={"2"}
+                    backgroundColor={optsColor}
+                    my={"4"}
                   >
-                        <option key={team1} value={team1} style={{ backgroundColor: '#1a382b' }}>
+                        <option key={team1} value={team1} style={{ backgroundColor: optsColor }}>
                           {abbvr[team1]}
                         </option>
                         {
-                          (team1 != team2) && (<option key={team2} value={team2} style={{ backgroundColor: '#1a382b' }}>
+                          (team1 != team2) && (<option key={team2} value={team2} style={{ backgroundColor: optsColor }}>
                             {abbvr[team2]}
                           </option>)
                         }
@@ -229,12 +232,12 @@ const IPL_Predictor = () => {
               value={venue || ""}
               onChange={(e) => selectVenue(e.target.value)}
               placeholder="Choose the Match Stadium's Venue"
-              backgroundColor={'#1a382b'}
-              my={"2"}
+              backgroundColor={optsColor}
+              my={"4"}
             >
               {
                 options['venues'].map((opt) => (
-                  <option key={opt} value={opt} style={{ backgroundColor: '#1a382b' }}>
+                  <option key={opt} value={opt} style={{ backgroundColor: optsColor }}>
                     {opt}
                   </option>
                 ))
@@ -242,7 +245,7 @@ const IPL_Predictor = () => {
             </Select>
             
           <Center>
-            <Button type="submit" mt={"14"}>Get Predictions</Button>
+            <Button type="submit" mt={"14"}>Get Prediction</Button>
           </Center>
           </VStack>
         </form>

@@ -1,15 +1,15 @@
 from flask import Blueprint, request, jsonify
-from app.controllers.Controller_IPL import PredictionController
+from app.controllers.Controller_ICC_Test_Cricket_Runs_Prediction import PredictionController
 from app.models.Model_Table import CSV2JSON, get_paginated_data
 from json import loads
 import sys
 
 
-Route_ODI_bp = Blueprint('ODI_prediction', __name__)
+Route_ICC_bp = Blueprint('ICC_Test_Cricket_Runs_prediction', __name__)
 prediction_controller = PredictionController()
 
 
-@Route_ODI_bp.route("/ODI-Predictor", methods=['POST'])
+@Route_ICC_bp.route("/ICC-Test-Cricket-Runs-Predictor", methods=['POST'])
 def predict():
     try:
         # data = request.get_json(force=True)
@@ -21,33 +21,29 @@ def predict():
         # data_dict = loads(data)
         data_dict = data
 
-        team1, team2, city, toss_decision, toss_winner, venue = data_dict.values()
-
-        toss_decision = int(toss_decision)
+        matches_played, innings, not_out, highest_score, avg, centuries, fifties, ducks, country, years_played, debut_year = map(
+            lambda x: round(x) if type(x) in (int, float) else x, data_dict.values())
 
         prediction = prediction_controller.predict(
-            [team1, team2, city, toss_decision, toss_winner, venue])
+            [matches_played, innings, not_out, highest_score, avg, centuries, fifties, ducks, country, years_played, debut_year])
 
-        res = jsonify(winner_team=prediction)
+        res = jsonify(predicted_runs=prediction)
         print(res)
         return res
     except Exception as ex:
         return jsonify(error=str(ex))
 
 
-@Route_ODI_bp.route("/ODI-Predictor", methods=['GET'])
+@Route_ICC_bp.route("/ICC-Test-Cricket-Runs-Predictor", methods=['GET'])
 def getData():
     try:
-        # data = CSV2JSON(
-        #     "./app/models/Data/ODI/ODI_Cricket_Matches_Original_Dataset.csv")
-        data = CSV2JSON(
-            "./app/models/Data/ODI/ODI_Dataset_Cleaned_Final_101.csv")
-        print(type(data), type(data[0]), file=sys.stderr)
+        data = CSV2JSON("./app/models/Data/ICC/ICC_Test_Cricket_Runs_Data.csv")
+        print(data[0], file=sys.stderr)
         return data
     except Exception as ex:
         return jsonify(error=str(ex))
 
-# @Route_ODI_bp.route("/ODI-Predictor", methods=['GET'])
+# @Route_IPL_bp.route("/IPL-Predictor", methods=['GET'])
 # def get_data():
 #     try:
 #         page = int(request.args.get('page', 1))

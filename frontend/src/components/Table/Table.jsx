@@ -6,7 +6,7 @@ import MemoizedTable from './MemoizedTable';
 import TablePaginationPanel from './TablePaginationPanel';
 
 
-function ExcelTable({ data }) {
+function ExcelTable({ data, title }) {
   const {
     columns,
     getTableProps,
@@ -60,23 +60,35 @@ function ExcelTable({ data }) {
   const slNoColumn = useMemo(() => columns.find((column) => column.Header === 'Sl. No.'), [columns]);
 
   return (
-    <Box py={"16"} bgColor={"#12504B"} color="#fff" minW="100vw" minH="100vh">
+    <Box py={"16"} bgColor={"primary.oceanBlue"} color="#fff" minW="100vw" minH="100vh">
       <Center>
-        <Input
-          value={globalFilter || ''}
-          onChange={(e) => setGlobalFilter(e.target.value)}
-          placeholder="Search..."
-          width={'70%'}
-          my={6}
-        />
-        <Button onClick={() => setIsMenuOpen(true)}>Show/Hide Columns</Button>
-        <TableMenuPanel
-          columns={columns}
-          slNoColumn={slNoColumn}
-          toggleColumnVisibility={toggleColumnVisibility}
-          isOpen={isMenuOpen}
-          onClose={() => setIsMenuOpen(false)}
-        />
+        <VStack>
+          <Text
+              fontSize={{ base: "xl", lg: "4xl" }}
+              fontWeight={"bold"}
+              my={"5%"}
+              color={"#fff"}
+              >
+            {title}
+          </Text>
+          <HStack>
+            <Input
+              value={globalFilter || ''}
+                onChange={(e) => setGlobalFilter(e.target.value)}
+                placeholder="Search..."
+                width={'70%'}
+              my={6}
+            />
+            <Button onClick={() => setIsMenuOpen(true)}>Show/Hide Columns</Button>
+          </HStack>
+          <TableMenuPanel
+            columns={columns}
+            slNoColumn={slNoColumn}
+            toggleColumnVisibility={toggleColumnVisibility}
+            isOpen={isMenuOpen}
+            onClose={() => setIsMenuOpen(false)}
+          />
+        </VStack>
       </Center>
       <Center>
         {data.length !== 0 ? (

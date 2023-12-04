@@ -21,13 +21,16 @@ import {
   Td,
   Center,
   VStack,
+  Link
 } from '@chakra-ui/react';
 
 import TableMenuPanel from './TableMenuPanel';
 import TablePaginationPanel from './TablePaginationPanel';
 
+import { isURL } from "../../utils/URL_Checker";
 
-function ExcelTable({ data }) {
+
+function ExcelTable({ data, title }) {
     const [columns, setColumns] = useState([]);
   
     const toggleColumn = (columnId) => {
@@ -65,8 +68,16 @@ function ExcelTable({ data }) {
     }, [data]);
   
     return (
-      <Box py={"16"} bgColor={"#12504B"} color={"#fff"} minW={"100vw"} minH={"100vh"}>
+      <Box py={"16"} bgColor={"primary.oceanBlue"} color={"#fff"} minW={"100vw"} minH={"100vh"}>
         <Center>
+          <Text
+            fontSize={{ base: "xl", lg: "4xl" }}
+            fontWeight={"bold"}
+            my={"5%"}
+            color={"#fff"}
+          >
+            {title}
+          </Text>
           <Input
             value={globalFilter || ''}
             onChange={(e) => setGlobalFilter(e.target.value)}
@@ -83,45 +94,49 @@ function ExcelTable({ data }) {
               <VStack>
                 <Table {...getTableProps()} variant="simple" w="97%">
                     <Thead>
-                    {headerGroups.map((headerGroup, index) => (
-                    <Tr key={index} {...headerGroup.getHeaderGroupProps()}>
-                        {headerGroup.headers.map((column, columnIndex) => (
-                        <Th
-                            key={columnIndex}
-                            {...column.getHeaderProps(column.getSortByToggleProps())}
-                            bgColor="gray.200"
-                            p={2}
-                            style={{ display: column.isVisible ? 'table-cell' : 'none' }}
-                        >
-                            {column.render('Header')}
-                            <span>
-                            {column.isSorted ? (column.isSortedDesc ? ' 🔽' : ' 🔼') : ''}
-                            </span>
-                        </Th>
-                        ))}
-                    </Tr>
-                    ))}
+                      {headerGroups.map((headerGroup, index) => (
+                        <Tr key={index} {...headerGroup.getHeaderGroupProps()}>
+                            {headerGroup.headers.map((column, columnIndex) => (
+                              <Th
+                                  key={columnIndex}
+                                  {...column.getHeaderProps(column.getSortByToggleProps())}
+                                  bgColor="gray.200"
+                                  p={2}
+                                  style={{ display: column.isVisible ? 'table-cell' : 'none' }}
+                              >
+                                {column.render('Header')}
+                                <span>
+                                  {column.isSorted ? (column.isSortedDesc ? ' 🔽' : ' 🔼') : ''}
+                                </span>
+                              </Th>
+                            ))}
+                        </Tr>
+                      ))}
                     </Thead>
+
                     <Tbody {...getTableBodyProps()}>
                         {rows.map((row, rowIndex) => {
-                        prepareRow(row);
-                        return (
+                          prepareRow(row);
+                          return (
                             <Tr key={rowIndex} {...row.getRowProps()}>
-                            {row.cells.map((cell, cellIndex) => (
+                              {row.cells.map((cell, cellIndex) => (
                                 <Td
-                                key={cellIndex}
-                                {...cell.getCellProps()}
-                                p={2}
-                                style={{ display: cell.column.isVisible ? 'table-cell' : 'none' }}
+                                  key={cellIndex}
+                                  {...cell.getCellProps()}
+                                  p={2}
+                                  style={{ display: cell.column.isVisible ? 'table-cell' : 'none' }}
                                 >
-                                {cell.render('Cell')}
+                                  {cell.render('Cell')}
+                                  {/* {console.log('cell.value=', cell.value)} */}
+                                  {/* {isURL(cell.value) ? <Link href={cell.value} onClick={()=>{console.log('Cell CLicked')}}>{cell.value}</Link>} : cell.render('Cell') */}
                                 </Td>
-                            ))}
+                              ))}
                             </Tr>
-                        );
+                          );
                         })}
                     </Tbody>
                 </Table>
+
                 <TablePaginationPanel
                   pageIndex={pageIndex}
                   pageCount={pageCount}

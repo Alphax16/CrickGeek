@@ -1,13 +1,14 @@
 import React from "react";
 import { AspectRatio, Box, Center } from "@chakra-ui/react";
-// import "../styles/Blog.css";
+import { motion } from "framer-motion"; 
+import "../styles/Blog.css";
 
 
 export const Blog = ({ videoId }) => {
   return (
-    <div className="blog-container" style={{ margin: '5%' }}>
+    <div className="blog-container" style={{ margin: "5%" }}>
       <h1 style={{ fontSize: "30px" }}>
-        <strong>CrickGeek 🦎 -</strong> Powering Cricket, Enforcing AI
+        <strong>CrickGeek 🏏 -</strong> Powering Cricket, Enforcing AI
       </h1>
 
       <iframe
@@ -21,7 +22,7 @@ export const Blog = ({ videoId }) => {
           display: "block",
           margin: "2% auto",
           boxShadow: "0px 0px 10px 0px rgba(0, 0, 0, 0.75)",
-          border: "2px solid #12504B",
+          border: "2px solid primary.oceanBlue",
           borderRadius: "10px",
           backgroundColor: "#fff",
         }}
@@ -33,12 +34,13 @@ export const Blog = ({ videoId }) => {
             src={"/assets/Blog_Images/Cricket_AI.png"}
             alt="Cricket Image"
             width="100%"
-            style={{
-              margin: "2% auto",
-              boxShadow: "0px 0px 10px 0px rgba(0, 0, 0, 0.75)",
-              border: "2px solid #12504B",
-              borderRadius: "10px",
-            }}
+            // style={{
+            //   margin: "2% auto",
+            //   boxShadow: "0px 0px 10px 0px rgba(0, 0, 0, 0.75)",
+            //   border: "2px solid primary.oceanBlue",
+            //   borderRadius: "10px",
+            // }}
+            className="floating-image"
           />
         </Box>
       </Box>
@@ -47,7 +49,7 @@ export const Blog = ({ videoId }) => {
         <strong style={{ fontSize: "25px" }}>Introduction:</strong> Welcome to
         the world of CrickGeek 🏏, where technology meets cricket, transforming
         the game with the power of Artificial Intelligence (AI). In this blog
-        post, we'll explore how AI and Machine Learning (ML) algorithms are
+        post, we&apos;ll explore how AI and Machine Learning (ML) algorithms are
         playing a pivotal role in redefining cricket, from predictive analytics
         to revolutionizing umpire decisions.
       </p>
@@ -64,17 +66,15 @@ export const Blog = ({ videoId }) => {
         teams and fans alike.
       </p>
 
-      <h3>Umpire Decision Classification</h3>
+      <h3>Revolutionizing your Cricket Experience with our AI models</h3>
 
-      <Center>
-        <img
-          src={"/assets/Blog_Images/Umpire_Decision_Classification.jpg"}
-          alt="Umpire Image Decision Classification"
-          width="40%"
-          height="25%"
-          style={{ marginBottom: "2%" }}
-        />
-      </Center>
+      <img
+        src={"/assets/Blog_Images/AI_Models.png"}
+        alt="Umpire Image Decision Classification"
+        width="100%"
+        height="100%"
+        className="floating-image"
+      />
 
       <p>
         Umpire decisions are a crucial aspect of cricket, and AI is revolutionizing
@@ -88,15 +88,17 @@ export const Blog = ({ videoId }) => {
       <h3>AI Models at Play</h3>
 
       <img
-        src={"/assets/Blog_Images/AI_Models_Cricket.jpg"}
+        src={"/assets/Blog_Images/IPL_Score_Predictor.png"}
         alt="AI Models in Cricket"
-        width="100%"
-        style={{ marginBottom: "2%" }}
+        width="80%"
+        height="60%"
+        // style={{ marginBottom: "2%" }}
+        className="floating-image"
       />
 
       <p>
-        At CrickGeek, we've developed cutting-edge AI models that go beyond
-        predictions. Let's explore some of the exciting applications within the
+        At CrickGeek, we&apos;ve developed cutting-edge AI models that go beyond
+        predictions. Let&apos;s explore some of the exciting applications within the
         realm of cricket:
       </p>
 
@@ -118,15 +120,31 @@ export const Blog = ({ videoId }) => {
         </li>
       </ol>
 
-      <h3>Revolutionizing Umpire Decisions</h3>
+      <h3>Umpire Decision Classification</h3>
 
-      <img
-        src={"/assets/Blog_Images/Umpire_Decision_Classification.jpg"}
-        alt="Umpire Image Decision Classification"
-        width="60%"
-        height="40%"
-        style={{ marginBottom: "2%" }}
-      />
+      <Center>
+        <img
+          src={"/assets/Blog_Images/Umpire_Decision_Classification.jpg"}
+          alt="Umpire Image Decision Classification"
+          width="60%"
+          height="30%"
+          className="floating-image"
+        />
+      </Center>
+      
+      <h3>Crick-Quiz</h3>
+      <p>
+        A fun and entertaining way to put knowledge of Cricket to test with out Cricket Quiz game, named &apos;Crick-Quiz&apos;.
+      </p>
+      <Center>
+        <img
+          src={"/assets/Blog_Images/Crick_Quiz.png"}
+          alt="Umpire Image Decision Classification"
+          width="90%"
+          height="100%"
+          className="floating-image"
+        />
+      </Center>
 
       <p>
         Through these technological advancements, CrickGeek is dedicated to
@@ -138,10 +156,21 @@ export const Blog = ({ videoId }) => {
 
       <br />
 
-      <center className="float-div">
+      <center className="float-div" style={{ fontSize: "200%" }}>
         <strong>
-          <div className="emoji">😊</div>
           <i>Thank You and enjoy the future of cricket with CrickGeek!</i>
+          <Center>
+            <motion.div className="emoji" 
+            whileHover={{ 
+              transition: "transform 0.3s ease", 
+              display: "inline-block", 
+              position: "absolute",
+              transform: "scale(5) translate(-50%, -50%)"
+            }}
+            >
+            😊
+            </motion.div>
+          </Center>
         </strong>
       </center>
     </div>

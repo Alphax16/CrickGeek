@@ -11,23 +11,29 @@ const CrickStats = () => {
           "description": "Explore a rich dataset containing detailed statistics from IPL cricket matches. Analyze player performances, team strategies, and match outcomes for a comprehensive understanding of the thrilling world of IPL cricket.",
           "linkTo": "/statistics/IPL"
         },
-        {
-          "title": "IPL Innings Statistics",
-          "imageSrc": "assets/Statistics/IPL_Innings_Statistics.png",
-          "description": "Dive into the fascinating realm of IPL cricket through this meticulously curated dataset. Uncover trends, track player achievements, and gain valuable insights into the dynamics of one of the most popular T20 cricket leagues in the world.",
-          "linkTo": "/statistics/IPL-Innings"
-        },
-        {
-          "title": "T20 Innings Mens' Cricket Match Statistics",
-          "imageSrc": "assets/Statistics/T20_Innings_Mens_Cricket_Match_Statistics.jpg",
-          "description": "Immerse yourself in the world of IPL cricket with these comprehensive stats. From batting averages to match outcomes, this provides a detailed look at the performances that define the excitement of IPL cricket.",
-          "linkTo": "/statistics/T20I"
-        },
+        // {
+        //   "title": "IPL Innings Statistics",
+        //   "imageSrc": "assets/Statistics/IPL_Innings_Statistics.png",
+        //   "description": "Dive into the fascinating realm of IPL cricket through this meticulously curated dataset. Uncover trends, track player achievements, and gain valuable insights into the dynamics of one of the most popular T20 cricket leagues in the world.",
+        //   "linkTo": "/statistics/IPL-Innings"
+        // },
+        // {
+        //   "title": "T20 Innings Mens' Cricket Match Statistics",
+        //   "imageSrc": "assets/Statistics/T20_Innings_Mens_Cricket_Match_Statistics.jpg",
+        //   "description": "Immerse yourself in the world of IPL cricket with these comprehensive stats. From batting averages to match outcomes, this provides a detailed look at the performances that define the excitement of IPL cricket.",
+        //   "linkTo": "/statistics/T20I"
+        // },
         {
           "title": "ODI Cricket Match Statistics",
           "imageSrc": "assets/Statistics/ODI_Cricket_Match_Statistics.jpg",
           "description": "Unlock the potential of cricket analysis with this IPL Cricket Match Statistics dataset. Whether you're a fan, analyst, or researcher, this dataset offers a treasure trove of information to unravel the intricacies of IPL matches.",
           "linkTo": "/statistics/ODI"
+        },
+        {
+          "title": "ICC Test Cricket Match Statistics",
+          "imageSrc": "assets/Statistics/ICC_Test_Cricket_Match_Statistics.jpg",
+          "description": "Unlock the potential of cricket analysis with this IPL Cricket Match Statistics dataset. Whether you're a fan, analyst, or researcher, this dataset offers a treasure trove of information to unravel the intricacies of IPL matches.",
+          "linkTo": "/statistics/ICC-Test-Cricket"
         },
         {
           "title": "Umpire Action Images Dataset",
@@ -51,7 +57,7 @@ const CrickStats = () => {
       
 
     return (
-        <Box y="16" bgColor="#12504B" color="#fff" minW={"100vw"} minH={"100vh"}>
+        <Box y="16" bgColor="primary.oceanBlue" color="#fff" minW={"100vw"} minH={"100vh"}>
             <VStack>
               <Heading mt={'5%'} py={'4'} fontSize={{ base: '2xl', sm: '4xl' }} fontWeight={'bold'} color={'white'}>
                 Global Cricket Statistics

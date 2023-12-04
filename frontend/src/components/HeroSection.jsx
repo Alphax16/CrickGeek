@@ -30,7 +30,7 @@ const HeroSection =()=> {
   
 
   return (
-    <Box bg={'#12504B'} className='joyride-start' >
+    <Box bg={'primary.oceanBlue'} className='joyride-start' >
     
     <MotionContainer maxW={'9xl'}  height='100vh' backgroundImage="url('/assets/hero_background.jpg')"
       backgroundSize="cover"

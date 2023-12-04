@@ -38,6 +38,7 @@ def predict():
         predicted_class, confidence_score = prediction_controller.classify(img)
         print(
             f'Prediction: {predicted_class}\nConfidence Score: {confidence_score}', file=sys.stdout)
+
         res = jsonify(decision=predicted_class,
                       confidence=str(confidence_score))
         return res

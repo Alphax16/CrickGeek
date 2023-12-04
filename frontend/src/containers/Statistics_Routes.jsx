@@ -4,6 +4,7 @@ import ExcelTable from "../components/Table/Table";
 import ImagesTable from "../components/Table/ImagesTable";
 import instance from "../api";
 import CrickStats from "./CrickStats";
+import NotFound from "./NotFound";
 // import { IPL_Table } from "./IPL_Table";
 
 
@@ -16,8 +17,18 @@ function Statistics_Routes() {
         "IPL-Innings": "/IPL-Predictor-2008-2017",
         "T20I": "/T20I-Mens-Cricket-Match-Predictor",
         "ODI": "/ODI-Predictor",
+        "ICC-Test-Cricket": "/ICC-Test-Cricket-Runs-Predictor",
         "Umpire-Action-Images": "/Umpire-Action-Decision-Classifier",
     };
+
+    // const titles = {
+    //     "IPL": "IPL Cricket Match Statistics",
+    //     "IPL-Innings": "IPL Innings Statistics",
+    //     "T20I": "T20 International Cricket Match Statistics",
+    //     "ODI": "ODI Cricket Match Statistics",
+    //     "ICC-Test-Cricket": "ICC Test Cricket Statistics",
+    //     "Umpire-Action-Images": "Umpire Action Data",
+    // };
 
     function getEndOfRoute() {
         const pathArray = location.pathname.split("/");
@@ -49,11 +60,15 @@ function Statistics_Routes() {
     return (
         <Routes>
             {/* <Route path="/IPL" element={<IPL_Table />} /> */}
-            <Route exact path="/" element={<CrickStats />} />
-            <Route exact path="/IPL" element={<ExcelTable data={data} />} />
-            <Route exact path="/IPL-Innings" element={<ExcelTable data={data} />} />
-            <Route exact path="/ODI" element={<ExcelTable data={data} />} />
-            <Route exact path="/Umpire-Action-Images" element={<ImagesTable data={data} serviceName={'Umpire_Actions_Images_Data'} />} />
+            <Route exact path="/" element={<CrickStats title={'Gloal Cricket Statistics'} />} />
+            <Route exact path="/IPL" element={<ExcelTable data={data} title={'IPL Cricket Match Statistics'} />} />
+            <Route exact path="/IPL-Innings" element={<ExcelTable data={data} title={'IPL Innings Statistics'} />} />
+            <Route exact path="/ODI" element={<ExcelTable data={data} title={'ODI Cricket Match Statistics'} />} />
+            <Route exact path="/ICC-Test-Cricket" element={<ExcelTable data={data} title={'ICC Test Cricket Statistics'} />} />
+
+            <Route exact path="/Umpire-Action-Images" element={<ImagesTable data={data} serviceName={'Umpire_Actions_Images_Data'} title={'Umpire Action Images Data'} />} />
+
+            <Route path="*" element={<NotFound />} />
         </Routes>
     );
 }

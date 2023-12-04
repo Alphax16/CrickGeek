@@ -101,13 +101,13 @@ const  Umpire_Action_Images_Classifier = () => {
 
   return (
     <Box>
-        <Box p={32} h="max-content" bg="#12504B" color="#fff" minW={"100vw"} minH={"100vh"}>
+        <Box p={32} h="max-content" bg="primary.oceanBlue" color="#fff" minW={"100vw"} minH={"130vh"}>
 
         <Box textAlign={'center'}>
             <Text
                 fontSize={{ base: "3xl", lg: "4xl" }}
                 fontWeight={"bold"}
-                my={"4"}
+                pb={"20"}
                 color={"#fff"}
             >
                 Umpire Action Images Classification
@@ -124,7 +124,7 @@ const  Umpire_Action_Images_Classifier = () => {
                 maxW="380px"
                 minH="60vh"
                 textAlign={"center"}
-                bgColor={"#12504B"}
+                bgColor={"primary.oceanBlue"}
                 color={"#ffffff"}
                 onDrop={handleDrop}
                 onDragOver={(e) => e.preventDefault()}>

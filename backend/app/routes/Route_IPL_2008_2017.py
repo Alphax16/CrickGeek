@@ -22,6 +22,7 @@ def predict():
 
         prediction = prediction_controller.predict(
             venue, batting_team, bowling_team, striker, bowler)
+        
         res = jsonify(predicted_score=prediction)
         print(res)
         return res

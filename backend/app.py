@@ -9,6 +9,8 @@ from app.routes.Route_T20I_Mens_Cricket_Match import Route_T20I_Mens_Cricket_Mat
 from app.routes.Route_IPL import Route_IPL_bp
 # from app.routes.Route_IPL_2008_2017 import Route_IPL_2008_2017_bp
 from app.routes.Route_ODI import Route_ODI_bp
+from app.routes.Route_ICC_Test_Cricket_Runs_Prediction import Route_ICC_bp
+
 from app.routes.Route_Umpire_Action_Decision_Classification import Route_Umpire_Action_Decision_Clf_bp
 
 
@@ -34,6 +36,8 @@ app.register_blueprint(
 # Route_IPL_2008_2017_bp, url_prefix=prefix)
 app.register_blueprint(
     Route_ODI_bp, url_prefix=prefix)
+app.register_blueprint(
+    Route_ICC_bp, url_prefix=prefix)
 
 
 # Graphical Multimedia(Image) Data AI Models Routes' Blueprints-
