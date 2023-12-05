@@ -1,10 +1,10 @@
-from pickle import load
+from joblib import load
 
 
 class PredictionController:
     def __init__(self):
-        with open("./app/models/pickles/T20I Men's Cricket Match_EL_NET_CV.pkl", 'rb') as fpk:
-            self.best_pipeline = load(fpk)
+        with open("./app/models/pickles/T20/T20I Mens Cricket Match_EL_NET_CV.joblib", 'rb') as fjb:
+            self.best_pipeline = load(fjb)
 
     def predict(self, features):
         try:

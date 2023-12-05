@@ -14,7 +14,7 @@ def predict():
     try:
         # data = request.get_json(force=True)
         data = request.json
-        print(data, file=sys.stderr)
+        print(data, file=sys.stdout)
 
         # innings_runs, 'Innings Wickets', 'Balls Remaining', 'Total Batter Runs', 'Total Non Striker Runs', 'Batter Balls Faced', 'Non Striker Balls Faced', 'Runs From Ball'] = data['features']
 
@@ -23,13 +23,22 @@ def predict():
 
         team1, team2, city, toss_decision, toss_winner, venue = data_dict.values()
 
-        toss_decision = int(toss_decision)
+        # toss_decision = int(toss_decision)
 
         prediction = prediction_controller.predict(
-            [team1, team2, city, toss_decision, toss_winner, venue])
-        
+            {
+                'team1': [team1],
+                'team2': [team2],
+                'city': [city],
+                'toss_decision': [toss_decision],
+                'toss_winner': [toss_winner],
+                'venue': [venue]
+            })
+
+        print('prediction:', prediction, file=sys.stdout)
+
         res = jsonify(winner_team=prediction)
-        print(res)
+        # print('Response:', res, file=sys.stdout)
         return res
     except Exception as ex:
         return jsonify(error=str(ex))

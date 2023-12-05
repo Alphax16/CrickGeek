@@ -1,9 +1,10 @@
-dvc
+scikit-learn==1.3.2
+joblib==1.3.2
+openpyxl
 cloudinary
 flask
 Flask-Cors
 Jinja2
-joblib==1.3.2
 keras
 numpy
 opencv-python
@@ -11,7 +12,6 @@ pandas
 pillow
 python-dotenv
 requests
-scikit-learn==1.0.2
 scipy
 tensorflow
 gunicorn

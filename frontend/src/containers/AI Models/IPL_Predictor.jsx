@@ -4,6 +4,7 @@ import axios from "axios";
 import LoadingSpinner from "../../components/LoadingSpinner";
 import Swal from "sweetalert2";
 import instance from "../../api";
+import { getKeyFromValue } from "../../utils/ObjFuns";
 // import { ThreeCircles } from "react-loader-spinner";
 
 
@@ -15,7 +16,7 @@ const IPL_Predictor = () => {
   const [team1, selectTeam1] = useState('');
   const [team2, selectTeam2] = useState('');
   const [city, chooseCity] = useState('');
-  const [tossDecision, setTossDecision] = useState('Head');
+  const [tossDecision, setTossDecision] = useState('Batting');
   const [tossWinner, selectTossWinner] = useState('');
   const [venue, selectVenue] = useState('');
 
@@ -37,7 +38,7 @@ const IPL_Predictor = () => {
               'Shaheed Veer Narayan Singh International Stadium', 'JSCA International Stadium Complex', 'Sheikh Zayed Stadium',
               'Sharjah Cricket Stadium', 'Dubai International Cricket Stadium'],
 
-    tossDecisions: ['Heads', 'Tails'],
+    tossDecisions: ['Batting', 'Fielding'],
 
     cities: ['Hyderabad', 'Pune', 'Rajkot', 'Indore', 'Bangalore', 'Mumbai', 'Kolkata', 'Delhi', 'Chandigarh', 'Kanpur',
               'Jaipur', 'Chennai', 'Cape Town', 'Port Elizabeth', 'Durban', 'Centurion', 'East London', 'Johannesburg',
@@ -45,10 +46,10 @@ const IPL_Predictor = () => {
               'Raipur', 'Ranchi', 'Abu Dhabi', 'Sharjah', 'Dubai']
   };
 
-  const abbvr = {MI: 'Mumbai Indians', KKR: 'Kolkata Knight Riders', RCB: 'Royal Challengers Bangalore', DC: 'Deccan Chargers', 
-                  CSK: 'Chennai Super Kings', RR: 'Rajasthan Royals', DD: 'Delhi Daredevils', GL: 'Gujarat Lions', 
-                  KXIP: 'Kings XI Punjab', SRH: 'Sunrisers Hyderabad', RPS: 'Rising Pune Supergiants', 
-                  KTK: 'Kochi Tuskers Kerala', PW: 'Pune Warriors'};
+  const abbvr = {'MI': 'Mumbai Indians', 'KKR': 'Kolkata Knight Riders', 'RCB': 'Royal Challengers Bangalore', 'DC': 'Deccan Chargers', 
+                  'CSK': 'Chennai Super Kings', 'RR': 'Rajasthan Royals', 'DD': 'Delhi Daredevils', 'GL': 'Gujarat Lions', 
+                  'KXIP': 'Kings XI Punjab', 'SRH': 'Sunrisers Hyderabad', 'RPS': 'Rising Pune Supergiants', 
+                  'KTK': 'Kochi Tuskers Kerala', 'PW': 'Pune Warriors'};
 
   
   const handlesubmit = async (e) => {
@@ -81,8 +82,14 @@ const IPL_Predictor = () => {
     console.log('tossWinner:', tossWinner);
 
     const data = {
-      team1: abbvr[team1], team2: abbvr[team2], city, toss_decision: tossDecision === 'Head' ? 0 : 1, toss_winner: tossWinner !== '' ? abbvr[tossWinner] : abbvr[team1], venue: venue
+      team1: abbvr[team1], team2: abbvr[team2], city, toss_decision: tossDecision === 'Batting' ? 'bat' : 'field', toss_winner: tossWinner !== '' ? abbvr[tossWinner] : abbvr[team1], venue: venue
     }
+
+    console.log(getKeyFromValue(abbvr, team1));
+
+    // const data = {
+    //   team1: team1, team2: team2, city, toss_decision: tossDecision === 'Batting' ? 'bat' : 'field', toss_winner: tossWinner !== '' ? tossWinner : team1, venue: venue
+    // }
 
     console.log('Frontend Data:', data);
 

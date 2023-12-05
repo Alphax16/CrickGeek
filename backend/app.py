@@ -3,7 +3,7 @@ from flask_cors import CORS
 # from app.utils.SetupDownload import downloadSetupFiles
 
 # from configs import initialize_logging
-from app.configs.logging_config import setup_logging, log_request_info
+# from app.configs.logging_config import setup_logging, log_request_info
 
 from app.routes.Route_T20I_Mens_Cricket_Match import Route_T20I_Mens_Cricket_Match_prediction_bp
 from app.routes.Route_IPL import Route_IPL_bp
