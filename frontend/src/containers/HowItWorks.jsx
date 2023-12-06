@@ -8,7 +8,8 @@ import { Blog } from "../components/Blog";
 
 const HowItWorks = () => {
 //   const videoId = 'Z6E8il4JetI';
-  const videoId = 'Tw3TjMuyjvQ';
+  // const videoId = 'Tw3TjMuyjvQ';
+  const videoId = 'gDbORPJaOXw';
 
   return (
     <Box py={"16"} bgColor={"primary.oceanBlue"} color="#fff">

@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useTable, useSortBy, useFilters, useGlobalFilter, usePagination } from 'react-table';
-import { HStack, Button, Text, Box, Input, Table, Spinner, Thead, Tbody, Tr, Th, Td, Center, VStack } from '@chakra-ui/react';
+import { HStack, Button, Text, Box, Input, Table, Spinner, Thead, Tbody, Tr, Th, Td, Center, VStack, IconButton, Image } from '@chakra-ui/react';
 import TableMenuPanel from './TableMenuPanel';
 import MemoizedTable from './MemoizedTable';
 import TablePaginationPanel from './TablePaginationPanel';
+import { saveAs } from 'file-saver';
 
 
 function ExcelTable({ data, title }) {
@@ -59,6 +60,17 @@ function ExcelTable({ data, title }) {
 
   const slNoColumn = useMemo(() => columns.find((column) => column.Header === 'Sl. No.'), [columns]);
 
+  const downloadAsCSV = () => {
+    const csvContent = [
+      columns.map((column) => column.Header).join(','), 
+      ...rows.map((row) => columns.map((column) => row.values[column.id]).join(',')), 
+    ].join('\n');
+
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8' });
+
+    saveAs(blob, `${title}_table.csv`);
+  };
+
   return (
     <Box py={"16"} bgColor={"primary.oceanBlue"} color="#fff" minW="100vw" minH="100vh">
       <Center>
@@ -71,7 +83,8 @@ function ExcelTable({ data, title }) {
               >
             {title}
           </Text>
-          <HStack>
+          
+          <HStack spacing={"4"}>
             <Input
               value={globalFilter || ''}
                 onChange={(e) => setGlobalFilter(e.target.value)}
@@ -79,8 +92,15 @@ function ExcelTable({ data, title }) {
                 width={'70%'}
               my={6}
             />
-            <Button onClick={() => setIsMenuOpen(true)}>Show/Hide Columns</Button>
+            <Button onClick={() => setIsMenuOpen(true)} bgColor="teal" color="white" px={"10"}>Show/Hide Columns</Button>
+            <IconButton
+              onClick={downloadAsCSV}
+              aria-label="Download as CSV"
+              bgColor="teal"
+              icon={<Image src="/assets/Widgets/save_down_2_white.svg" alt="Download Icon" boxSize="24px" />}
+            />
           </HStack>
+
           <TableMenuPanel
             columns={columns}
             slNoColumn={slNoColumn}

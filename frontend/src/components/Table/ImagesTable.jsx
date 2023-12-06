@@ -1,12 +1,14 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { useTable, useGlobalFilter, useSortBy, usePagination, useRowSelect } from 'react-table';
-import { Box, Center, VStack, HStack, Text, Input, Table, Thead, Tbody, Tr, Th, Td, Button, Spinner } from '@chakra-ui/react';
+import { Box, Center, VStack, HStack, Text, Input, Table, Thead, Tbody, Tr, Th, Td, Button, Spinner, IconButton, Image } from '@chakra-ui/react';
 import JSZip from 'jszip';
 import { saveAs } from 'file-saver';
 
 import TableMenuPanel from './TableMenuPanel';
 import TablePaginationPanel from './TablePaginationPanel';
 import Swal from 'sweetalert2';
+import { getFileExtension, getFileExtensionFromUrl } from '../../utils/FileFuncs';
+
 
 const initializeColumns = (data) => {
   if (!data || data.length === 0) {
@@ -58,7 +60,7 @@ function ImagesTable({ data, serviceName, title }) {
       columns: useMemo(() => columns.filter((col) => col.isVisible), [columns]),
       data,
       initialState: { pageSize: 10, selectedRowIds },
-      getRowId: (row) => row.id,
+      getRowId: (row, index) => index, // Use index as the row ID
     },
     useGlobalFilter,
     useSortBy,
@@ -83,6 +85,7 @@ function ImagesTable({ data, serviceName, title }) {
       ]);
     }
   );
+  
 
   const visibleColumns = headerGroups[0]?.headers.filter((column) => column.isVisible) || [];
 
@@ -90,15 +93,84 @@ function ImagesTable({ data, serviceName, title }) {
     setSelectedRowIds(toggleAllRowsSelected ? { 0: true } : {});
   }, [toggleAllRowsSelected]);
 
+  useEffect(() => {
+    console.log('Selected Row IDs:', selectedRowIds);
+  }, [selectedRowIds]);
+
+  const downloadImages = async (selectedImages, serviceName, setLoading) => {
+    setLoading(true);
+  
+    if (selectedImages.length === 1) {
+      const image = selectedImages[0];
+      saveAs(image.url, image.name);
+      setLoading(false);
+    } else {
+      const zip = new JSZip();
+  
+      // const fetchAndAddToZip = async (image) => {
+      //   try {
+      //     const response = await fetch(image.url);
+      //     const data = await response.arrayBuffer();
+      //     zip.file(image.name, data);
+      //   } catch (error) {
+      //     console.error('Error fetching or processing image:', error);
+      //   }
+      // };
+
+      const fetchAndAddToZip = async (image) => {
+        try {
+          const response = await fetch(image.url);
+      
+          if (!response.ok) {
+            throw new Error(`Failed to fetch image (${image.name}): ${response.statusText}`);
+          }
+      
+          const contentType = response.headers.get('Content-Type');
+          // const fileExtension = getFileExtension(image.name) || getFileExtensionFromUrl(image.url) || getFileExtension(contentType);
+          const fileExtension = getFileExtension(image.url) || getFileExtensionFromUrl(image.url) || getFileExtension(contentType);
+      
+          if (!fileExtension) {
+            throw new Error(`Cannot determine file extension for image (${image.name}).`);
+          }
+      
+          const data = await response.arrayBuffer();
+          zip.file(`${image.name}.${fileExtension}`, data);
+        } catch (error) {
+          console.error('Error fetching or processing image:', error);
+        }
+      };
+  
+      const promises = selectedImages.map(fetchAndAddToZip);
+  
+      try {
+        await Promise.all(promises);
+  
+        const blob = await zip.generateAsync({ type: 'blob' });
+  
+        saveAs(blob, `${serviceName}_images.zip`);
+      } catch (error) {
+        console.error('Error generating zip file:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+  };
+
   const handleDownloadImages = () => {
+    console.log('rows:', rows);
+    console.log('selectedRowIds:', selectedRowIds);
+  
     const selectedImages = rows
-      .filter((row) => selectedRowIds[row.id])
+      .filter((row, index) => row.isSelected)
       .map((row) => ({
         id: row.values.id,
         name: row.values.name,
         url: row.values.url,
       }));
-
+  
+    console.log('Selected Row IDs:', selectedRowIds);
+    console.log('Selected Images:', selectedImages);
+  
     if (selectedImages.length === 0) {
       Swal.fire({
         icon: 'warning',
@@ -107,17 +179,28 @@ function ImagesTable({ data, serviceName, title }) {
       });
       return;
     }
-
-    console.log('Selected Images:', selectedImages);
+  
+    console.log('Downloading images...');
     downloadImages(selectedImages, serviceName, setLoading);
   };
-
+  
   const openMenuPanel = () => {
     setMenuPanelOpen(true);
   };
 
   const closeMenuPanel = () => {
     setMenuPanelOpen(false);
+  };
+
+  const downloadAsCSV = () => {
+    const csvContent = [
+      columns.map((column) => column.Header).join(','), 
+      ...rows.map((row) => columns.map((column) => row.values[column.id]).join(',')), 
+    ].join('\n');
+
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8' });
+
+    saveAs(blob, `${title}_table.csv`);
   };
 
   return (
@@ -146,6 +229,13 @@ function ImagesTable({ data, serviceName, title }) {
                   />
 
                   <Button onClick={openMenuPanel}>Open Menu Panel</Button>
+
+                  {/* <IconButton
+                    onClick={downloadAsCSV}
+                    aria-label="Download as CSV"
+                    bgColor="teal"
+                    icon={<Image src="/assets/Widgets/save_down_3.svg" alt="Download Icon" boxSize="24px" />}
+                  /> */}
                 </HStack>
 
                 <Table {...getTableProps()} variant="simple" w="70vw">
@@ -189,6 +279,7 @@ function ImagesTable({ data, serviceName, title }) {
                   </Tbody>
 
                 </Table>
+
                 <TablePaginationPanel
                   pageIndex={pageIndex}
                   pageCount={pageCount}

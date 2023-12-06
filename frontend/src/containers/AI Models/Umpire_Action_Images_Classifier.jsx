@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Button, Center, Image, Input, Text, Flex, VStack } from "@chakra-ui/react";
 import LoadingSpinner from "../../components/LoadingSpinner";
 import Swal from "sweetalert2";
 import instance from "../../api";
 
 
-const  Umpire_Action_Images_Classifier = () => {
+const  Umpire_Action_Images_Classifier = ({ mode='dev' }) => {
   const [file, setSelectedFile] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
   const [resImgURL, setResImgURL] = useState("");
@@ -19,6 +19,17 @@ const  Umpire_Action_Images_Classifier = () => {
     'no_action': 'No Action (At ease)',
   }
 
+  useEffect(() => {
+    if (mode !== 'dev') {
+      Swal.fire({
+        title: `Apologies...😔. Service not available!`,
+        // text: `Confidence: ${Math.round(response.data.confidence * 100)}%`,
+        html: `<strong>NOTE</strong> : This is a resource consuming image processing AI model requiring extensive computation power and RAM. Our budget being limited, we had to <strong>disable this service in our production build</strong>. <strong>Sorry :'(</strong>`,
+        icon: "warning",
+      });
+    }
+  }, []);
+
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     setSelectedFile(file);
@@ -31,9 +42,16 @@ const  Umpire_Action_Images_Classifier = () => {
   };
 
   const handleUpload = () => {
-    if (file) {
+    if (file && mode === 'dev') {
       setLoading(true);
       handleSubmit();
+    } else {
+      Swal.fire({
+        title: `Apologies...😔. Service not available!`,
+        // text: `Confidence: ${Math.round(response.data.confidence * 100)}%`,
+        html: `<strong>NOTE</strong> : This is a resource consuming image processing AI model requiring extensive computation power and RAM. Our budget being limited, we had to <strong>disable this service in our production build</strong>. <strong>Sorry :'(</strong>`,
+        icon: "warning",
+      });
     }
   };
 
@@ -54,36 +72,37 @@ const  Umpire_Action_Images_Classifier = () => {
   };
 
   const handleSubmit = async () => {
-    const formData = new FormData();
-    formData.append("image", file);
+      const formData = new FormData();
+      formData.append("image", file);
 
-    try {
-      const response = await instance.post(
-        "/Umpire-Action-Decision-Classifier",
-        formData,
-        {
-          headers: {
-            "content-type": "multipart/form-data",
-          },
-        }
-      );
-      console.log("File uploaded:", response.data);
-      // console.log(Math.round(parseFloat(response.data.confidence + Number.EPSILON) * 100) / 100)
-      const approxConfidence = Math.round(parseFloat(response.data.confidence + Number.EPSILON) * (100**2)) / 100;
-     
-      Swal.fire({
-        title: `Action Decision: ${decisionFormatter[response.data.decision]}`,
-        // text: `Confidence: ${Math.round(response.data.confidence * 100)}%`,
-        text: `Confidence: ${approxConfidence.toFixed(2)}%`,
-        icon: "success",
-      });
+      try {
+        const response = await instance.post(
+          "/Umpire-Action-Decision-Classifier",
+          formData,
+          {
+            headers: {
+              "content-type": "multipart/form-data",
+            },
+          }
+        );
 
-      setResImgURL(response.data.url);
-    } catch (error) {
-      console.error("Error uploading file:", error);
-    } finally {
-      setLoading(false);
-    }
+        console.log("File uploaded:", response.data);
+        // console.log(Math.round(parseFloat(response.data.confidence + Number.EPSILON) * 100) / 100)
+        const approxConfidence = Math.round(parseFloat(response.data.confidence + Number.EPSILON) * (100**2)) / 100;
+      
+        Swal.fire({
+          title: `Action Decision: ${decisionFormatter[response.data.decision]}`,
+          // text: `Confidence: ${Math.round(response.data.confidence * 100)}%`,
+          text: `Confidence: ${approxConfidence.toFixed(2)}%`,
+          icon: "success",
+        });
+
+        setResImgURL(response.data.url);
+      } catch (err) {
+        console.error("Error uploading file:", err);
+      } finally {
+        setLoading(false);
+      }
   };
 
   const downloadResImage = () => {
