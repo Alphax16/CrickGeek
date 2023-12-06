@@ -12,34 +12,34 @@ prediction_controller = PredictionController()
 @Route_IPL_bp.route("/IPL-Predictor", methods=['POST'])
 def predict():
     try:
-        # data = request.get_json(force=True)
         data = request.json
         print(data, file=sys.stdout)
 
-        # innings_runs, 'Innings Wickets', 'Balls Remaining', 'Total Batter Runs', 'Total Non Striker Runs', 'Batter Balls Faced', 'Non Striker Balls Faced', 'Runs From Ball'] = data['features']
-
-        # data_dict = loads(data)
         data_dict = data
-
         team1, team2, city, toss_decision, toss_winner, venue = data_dict.values()
 
-        # toss_decision = int(toss_decision)
-
-        prediction = prediction_controller.predict(
-            {
-                'team1': [team1],
-                'team2': [team2],
-                'city': [city],
-                'toss_decision': [toss_decision],
-                'toss_winner': [toss_winner],
-                'venue': [venue]
-            })
+        prediction = prediction_controller.predict({
+            'team1': [team1],
+            'team2': [team2],
+            'city': [city],
+            'toss_decision': [toss_decision],
+            'toss_winner': [toss_winner],
+            'venue': [venue]
+        })
 
         print('prediction:', prediction, file=sys.stdout)
 
-        res = jsonify(winner_team=prediction)
-        # print('Response:', res, file=sys.stdout)
-        return res
+        prediction_val = round(prediction[0])
+
+        if prediction_val > 0:
+            results = {'winner_team': team1, 'runs': abs(prediction_val)}
+        elif prediction_val < 0:
+            results = {'winner_team': team2, 'runs': abs(prediction_val)}
+        else:
+            results = {'winner_team': 'Tie', 'runs': abs(prediction_val)}
+
+        # res = jsonify(winner_team=prediction)
+        return results
     except Exception as ex:
         return jsonify(error=str(ex))
 
@@ -47,7 +47,7 @@ def predict():
 @Route_IPL_bp.route("/IPL-Predictor", methods=['GET'])
 def getData():
     try:
-        data = CSV2JSON("./app/models/Data/IPL/IPL_Data.csv")
+        data = CSV2JSON("./app/models/Data/IPL2/IPL_Data.csv")
         print(data[0], file=sys.stderr)
         return data
     except Exception as ex:

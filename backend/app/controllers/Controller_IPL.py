@@ -7,81 +7,43 @@ import sys
 
 class PredictionController:
     def __init__(self):
-        # with open("./app/models/pickles/IPL/IPL_Random_Forest_Classifier.joblib", 'rb') as fjb:
-        # self.IPL_Reg = load(
-        #     "./app/models/pickles/IPL/IPL_Random_Forest_Regressor.joblib")
-        # self.xl_encodings = pd.read_excel(
-        #     "./app/models/Data/IPL/IPL_Encodings.xlsx", sheet_name=None)
-        # self.team_encodings = self.xl_encodings['Team Encodings']
-        # self.city_encodings = self.xl_encodings['City Encodings']
-        # self.venue_encodings = self.xl_encodings['Venue Encodings']
-
         self.model = load(
-            "./app/models/pickles/IPL/IPL_Random_Forest_Classifier_2.joblib")
-
+            "./app/models/pickles/IPL/IPL_Random_Forest_Regressor_2.joblib")
         self.label_encoders = load(
-            "./app/models/pickles/IPL/IPL_Label_Encoder_2.joblib")
-
-        # print('Encoding...', self.team_encodings, self.city_encodings,
-        #       self.venue_encodings, file=sys.stdout)
+            "./app/models/pickles/IPL/IPL_Label_Encoders_2.joblib")
 
     def predict(self, features):
         try:
-            data = features
-
-            print('data:', data, file=sys.stdout)
-
-            # input_data = pd.DataFrame(data)
-
-            # # imputer = SimpleImputer(strategy="most_frequent")
-            # # input_data = pd.DataFrame(imputer.fit_transform(
-            # #     input_data), columns=input_data.columns)
-
-            # print('Input Data:', input_data, file=sys.stdout)
-
-            categorical_columns = ['team1', 'team2',
-                                   'toss_winner', 'city', 'toss_decision', 'venue']
-            # for col in categorical_columns:
-            #     input_data[col] = self.label_encoders[col].transform(
-            #         input_data[col])
-
-            # # expected_columns = ['team1', 'team2', 'city',
-            # #                     'toss_decision', 'toss_winner', 'venue']
-            # expected_columns = ['winner']
-            # for col in expected_columns:
-            #     if col not in input_data.columns:
-            #         if col in categorical_columns:
-            #             # If the column is categorical, set it to the most frequent value
-            #             default_value = input_data[col].mode().iloc[0]
-            #         else:
-            #             # If the column is numerical, set it to the mean value
-            #             default_value = input_data[col].mean()
-
-            #         # Create a DataFrame with a single row and assign it to the missing column
-            #         input_data[col] = pd.DataFrame(
-            #             {col: [default_value]}, index=[0])
-
             enc_data = {}
-            for category in categorical_columns:
-                if category in ['team1', 'team2', 'toss_winner']:
-                    enc_data[category] = self.label_encoders['teams'].transform(
-                        data[category])
-                else:
-                    enc_data[category] = self.label_encoders[category].transform(
-                        data[category])
+
+            enc_data['team1'] = self.label_encoders['teams'].transform(
+                features['team1'])[0]
+            enc_data['team2'] = self.label_encoders['teams'].transform(
+                features['team2'])[0]
+
+            # Encode 'toss_winner', 'city', 'toss_decision', 'venue'
+            for category in ['city', 'toss_decision', 'toss_winner', 'venue']:
+                enc_data[category] = self.label_encoders[category].transform(
+                    features[category])[0]
+
+            # Handle 'team1' and 'team2' encoding
+            # team_encoding = self.label_encoders['teams'].transform(
+            #     [features['team1'], features['team2']])
+            # enc_data['team1'], enc_data['team2'] = team_encoding[0], team_encoding[1]
 
             print('Encoded Data:', enc_data, file=sys.stdout)
-            print('List of Encoded Data Dict. Values:',
-                  [i[0] for i in enc_data.values()])
 
-            predictions = self.model.predict(
-                np.array([i[0] for i in enc_data.values()]).reshape(1, -1))
-            print('predictions-79:', predictions)
+            # Extract values from the dictionary to form a list for prediction
+            # predictions = self.model.predict(
+            #     np.array([enc_data[cat] for cat in enc_data.values()]).reshape(1, -1))
+            enc_df = pd.DataFrame(enc_data, index=[0])
+            prediction = self.model.predict(enc_df)
+            print('Prediction-41:', prediction, file=sys.stdout)
 
-            decoded_prediction = [list(self.label_encoders['teams'].inverse_transform([pred]))[
-                0] for pred in predictions]
+            # decoded_prediction = self.label_encoders['teams'].inverse_transform([
+            #     predictions[0]])[0]
 
-            return decoded_prediction
+            return prediction
         except Exception as ex:
             print('Exception:', ex, file=sys.stdout)
             return f'Exception: {ex}'

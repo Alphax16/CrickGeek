@@ -68,10 +68,13 @@ const  Umpire_Action_Images_Classifier = () => {
         }
       );
       console.log("File uploaded:", response.data);
+      // console.log(Math.round(parseFloat(response.data.confidence + Number.EPSILON) * 100) / 100)
+      const approxConfidence = Math.round(parseFloat(response.data.confidence + Number.EPSILON) * (100**2)) / 100;
      
       Swal.fire({
-        title: `Action Decision: ${decisionFormatter[response.data.decision]}\nConfidence: ${response.data.confidence}`,
-
+        title: `Action Decision: ${decisionFormatter[response.data.decision]}`,
+        // text: `Confidence: ${Math.round(response.data.confidence * 100)}%`,
+        text: `Confidence: ${approxConfidence.toFixed(2)}%`,
         icon: "success",
       });
 

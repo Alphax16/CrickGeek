@@ -101,8 +101,9 @@ const IPL_Predictor = () => {
       // Show Sweet Alert after 4 seconds if both teams are different
       if (team1 !== team2) {
         Swal.fire({
-          title: `Winner Team: ${response.data.winner_team}`,
-          icon: "success",
+          title: `Winner Team: ${response.data.winner_team}`, 
+          text: `Won by ${response.data.runs} Runs`, 
+          icon: "success", 
         });
       }
       setResponseText(response.data);
@@ -147,7 +148,10 @@ const IPL_Predictor = () => {
           <VStack>     
             <Select
               value={team1 || ""}
-              onChange={(e) => selectTeam1(e.target.value)}
+              onChange={(e) => {
+                selectTossWinner('')
+                selectTeam1(e.target.value)
+              }}
               placeholder="Choose First Team"
               backgroundColor={optsColor}
               my={"4"}
@@ -163,7 +167,10 @@ const IPL_Predictor = () => {
             
             <Select
               value={team2 || ""}
-              onChange={(e) => selectTeam2(e.target.value)}
+              onChange={(e) => {
+                selectTossWinner('')
+                selectTeam2(e.target.value)
+              }}
               placeholder="Choose Second Team"
               backgroundColor={optsColor}
               my={"4"}
