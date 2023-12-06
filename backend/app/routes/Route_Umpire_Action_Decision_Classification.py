@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from app.controllers.Controller_Umpire_Decision_Classification import PredictionController
+# from app.controllers.Controller_Umpire_Decision_Classification import PredictionController
 from app.models.Model_Images import upload_images2Cloudinary_NoLocSave, get_image_links_from_Cloudinary
 from json import loads
 from PIL import Image
@@ -11,7 +11,7 @@ import sys
 
 Route_Umpire_Action_Decision_Clf_bp = Blueprint(
     'Umpire_action_decision_classification', __name__)
-prediction_controller = PredictionController()
+# prediction_controller = PredictionController()
 
 
 # @Route_Umpire_Action_Decision_Clf_bp.route("/Umpire-Action-Decision-Classifier", methods=['POST'])
