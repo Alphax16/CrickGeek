@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import { Box, Button, Center, Image, Input, Text, Flex, VStack } from "@chakra-ui/react";
 import LoadingSpinner from "../../components/LoadingSpinner";
 import Swal from "sweetalert2";
+import displayAlertBox from "../../components/AlertBox";
 import instance from "../../api";
 
 
-const  Umpire_Action_Images_Classifier = ({ mode='dev' }) => {
+const  Umpire_Action_Images_Classifier = ({ videoId, mode='dev' }) => {
   const [file, setSelectedFile] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
   const [resImgURL, setResImgURL] = useState("");
@@ -19,14 +20,30 @@ const  Umpire_Action_Images_Classifier = ({ mode='dev' }) => {
     'no_action': 'No Action (At ease)',
   }
 
+  const alertTitle = `Apologies...😔. Service not available!`;
+  const alertBody = `<strong>NOTE</strong> : 
+  This is a resource consuming image processing AI model requiring extensive computation power and RAM.
+  <br/>
+  Our budget being limited, we had to <strong>disable this service in our production build</strong>. 
+  <strong>
+    Sorry :'(
+  </strong>
+  <br /><br />
+  You can watch the complete demo video covering all the features of our application at-
+  <a href='https://www.youtube.com/watch?v=${videoId}' 
+    target='_blank' 
+    style="color: blue" 
+    onmouseover="this.style.textDecoration='underline'"
+    onmouseout="this.style.textDecoration='none'"
+  >
+      <strong>
+          https://www.youtube.com/watch?v=${videoId}
+      </strong>
+  </a>`;
+
   useEffect(() => {
     if (mode !== 'dev') {
-      Swal.fire({
-        title: `Apologies...😔. Service not available!`,
-        // text: `Confidence: ${Math.round(response.data.confidence * 100)}%`,
-        html: `<strong>NOTE</strong> : This is a resource consuming image processing AI model requiring extensive computation power and RAM. Our budget being limited, we had to <strong>disable this service in our production build</strong>. <strong>Sorry :'(</strong>`,
-        icon: "warning",
-      });
+      displayAlertBox({ title: alertTitle, body: alertBody });
     }
   }, []);
 
@@ -46,12 +63,7 @@ const  Umpire_Action_Images_Classifier = ({ mode='dev' }) => {
       setLoading(true);
       handleSubmit();
     } else {
-      Swal.fire({
-        title: `Apologies...😔. Service not available!`,
-        // text: `Confidence: ${Math.round(response.data.confidence * 100)}%`,
-        html: `<strong>NOTE</strong> : This is a resource consuming image processing AI model requiring extensive computation power and RAM. Our budget being limited, we had to <strong>disable this service in our production build</strong>. <strong>Sorry :'(</strong>`,
-        icon: "warning",
-      });
+      displayAlertBox({ title: alertTitle, body: alertBody });
     }
   };
 

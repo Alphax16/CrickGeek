@@ -12,6 +12,8 @@ import ICC_Test_Cricket_Runs_Predictor from "./AI Models/ICC_Test_Cricket_Runs_P
 
 
 function AI_Model_Routes() {
+    const videoId = 'gDbORPJaOXw';
+
     return (
       <Routes>
         <Route path="/" element={<ModelCards />} />
@@ -20,7 +22,7 @@ function AI_Model_Routes() {
         <Route path="t20i-score-predictor" element={<T20I_Innings_Predictor />} />
         <Route path="icc-test-runs-predictor" element={<ICC_Test_Cricket_Runs_Predictor />} />
         
-        <Route path="umpire-action-decision-classifier" element={<Umpire_Action_Images_Classifier mode={'prod'} />} />
+        <Route path="umpire-action-decision-classifier" element={<Umpire_Action_Images_Classifier videoId={videoId} mode={'prod'} />} />
         
         {/* <Route path="oil-spill-detector" element={<OilSpillDetector />} />
         <Route path="noise-pollution-detector" element={<NoisePollutionDetector />} />
