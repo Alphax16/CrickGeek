@@ -5,7 +5,7 @@ import LinkPreview from "../LinkPreview";
 
 
 const MemoizedTable = React.memo(({ getTableProps, headerGroups, rows, prepareRow }) => (
-  <Table {...getTableProps()} variant="simple" w="97%">
+  <Table {...getTableProps()} variant="simple" w="90vw">
     <Thead>
       {headerGroups.map((headerGroup, index) => (
         <Tr key={index} {...headerGroup.getHeaderGroupProps()}>
